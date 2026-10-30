@@ -35,9 +35,24 @@ logging.basicConfig(
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
+# Environment Configuration
 TOKEN = os.getenv("BOT_TOKEN")
-if not TOKEN or TOKEN == "BOT_TOKEN":
-    TOKEN = "8835733877:AAG_JNtBjdc301dUFnAzpeh0K7nSMrabrbc"
+
+# Channel and Social Links
+URL_CV_CHANNEL = os.getenv("URL_CV_CHANNEL", "https://t.me/USEACCTCV")
+URL_INTERVIEW_TIP = os.getenv("URL_INTERVIEW_TIP", "https://t.me/USEACCITP")
+URL_CAREER_TIP = os.getenv("URL_CAREER_TIP", "https://t.me/USEACCCT")
+URL_CAREER_CHANNEL = os.getenv("URL_CAREER_CHANNEL", "https://t.me/useacareercenter")
+URL_ADMIN = os.getenv("URL_ADMIN", "https://t.me/USEACCAD")
+URL_FACEBOOK = os.getenv("URL_FACEBOOK", "https://www.facebook.com/useacareercenter")
+URL_TIKTOK = os.getenv("URL_TIKTOK", "https://www.tiktok.com/@useacareercenter")
+
+# Donation Details
+DONATE_NAME = os.getenv("DONATE_NAME", "BOUSIVLY KHEV")
+DONATE_KHR = os.getenv("DONATE_KHR", "005 920 170")
+DONATE_USD = os.getenv("DONATE_USD", "005 920 166")
+DONATE_NAME_ALT = os.getenv("DONATE_NAME_ALT", "SOR CHEATAMRIN")
+DONATE_KHR_ALT = os.getenv("DONATE_KHR_ALT", "077 893 954")
 
 # បង្កើត Reply Keyboard បង្ហាញនៅខាងក្រោមប្រអប់វាយអក្សរ (Under typing)
 reply_keyboard = [
@@ -71,37 +86,37 @@ BUTTON_ACTIONS = {
     "✉️ CV & Cover Letter": {
         "text": "📄 *CV & Cover Letter*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីចូលទៅកាន់ Channel៖",
         "btn_label": "🔗 ចូលទៅកាន់ CV & Cover Letter",
-        "url": "https://t.me/USEACCTCV",
+        "url": URL_CV_CHANNEL,
     },
     "💁‍♀️ គន្លឹះក្នុងការសម្ភាស": {
         "text": "💡 *គន្លឹះក្នុងការសម្ភាសន៍*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលការណែនាំសម្ភាសន៍៖",
         "btn_label": "🔗 ចូលទៅកាន់ គន្លឹះក្នុងការសម្ភាស",
-        "url": "https://t.me/USEACCITP",
+        "url": URL_INTERVIEW_TIP,
     },
     "💁‍♀️ Interview Tip": {
         "text": "💡 *Interview Tip*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលការណែនាំសម្ភាសន៍៖",
         "btn_label": "🔗 ចូលទៅកាន់ Interview Tip",
-        "url": "https://t.me/USEACCITP",
+        "url": URL_INTERVIEW_TIP,
     },
     "💼 Career Tip": {
         "text": "💼 *Career Tip*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលគន្លឹះការងារ៖",
         "btn_label": "🔗 ចូលទៅកាន់ Career Tip",
-        "url": "https://t.me/USEACCCT",
+        "url": URL_CAREER_TIP,
     },
     "📢 CareerCenter Channel": {
         "text": "📢 *Career Center Channel*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលChannel៖",
         "btn_label": "🔗 ចូលទៅកាន់ Career Center Channel",
-        "url": "https://t.me/useacareercenter",
+        "url": URL_CAREER_CHANNEL,
     },
     "🛡️ CareerCenter Admin": {
         "text": "🛡️ *CareerCenter Admin*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលAdmin៖",
         "btn_label": "🔗 ចូលទៅកាន់ CareerCenter Admin",
-        "url": "https://t.me/USEACCAD",
+        "url": URL_ADMIN,
     },
     "❤️ CC Facebook Page": {
         "text": "❤️ *CC Facebook Page*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីចូលទៅកាន់ Facebook Page៖",
         "btn_label": "🔗 ចូលទៅកាន់ Facebook Page",
-        "url": "https://www.facebook.com/useacareercenter",
+        "url": URL_FACEBOOK,
     },
     "💝 Support Us": {
         "text": (
@@ -112,13 +127,13 @@ BUTTON_ACTIONS = {
             [
                 InlineKeyboardButton(
                     "❤️ CareerCenter Facebook page",
-                    url="https://www.facebook.com/useacareercenter",
+                    url=URL_FACEBOOK,
                 )
             ],
             [
                 InlineKeyboardButton(
                     "🎵 CareerCenter Tiktok page",
-                    url="https://www.tiktok.com/@useacareercenter",
+                    url=URL_TIKTOK,
                 )
             ],
             [
@@ -138,13 +153,13 @@ BUTTON_ACTIONS = {
             [
                 InlineKeyboardButton(
                     "❤️ CareerCenter Facebook page",
-                    url="https://www.facebook.com/useacareercenter",
+                    url=URL_FACEBOOK,
                 )
             ],
             [
                 InlineKeyboardButton(
                     "🎵 CareerCenter Tiktok page",
-                    url="https://www.tiktok.com/@useacareercenter",
+                    url=URL_TIKTOK,
                 )
             ],
             [
@@ -158,21 +173,21 @@ BUTTON_ACTIONS = {
     "💝 Donate to Support Us": {
         "photo": QR_IMAGE_PATH,
         "caption": (
-            "💝 *Donate to Support Us*\n\n"
-            "👤 *ឈ្មោះ៖* BOUSIVLY KHEV\n"
-            "💳 *Wallet KHR៖* `005 920 170`\n\n"
-            "💳 *Wallet USD៖* `005 920 166`\n\n"
-            "សូមស្កេន KHQR ខាងលើដើម្បីឧបត្ថម្ភគាំទ្រ Career Center! សូមអរគុណច្រើន 🙏"
+            f"💝 *Donate to Support Us*\n\n"
+            f"👤 *ឈ្មោះ៖* {DONATE_NAME}\n"
+            f"💳 *Wallet KHR៖* `{DONATE_KHR}`\n\n"
+            f"💳 *Wallet USD៖* `{DONATE_USD}`\n\n"
+            f"សូមស្កេន KHQR ខាងលើដើម្បីឧបត្ថម្ភគាំទ្រ Career Center! សូមអរគុណច្រើន 🙏"
         ),
     },
     "Donate us": {
         "photo": QR_IMAGE_PATH,
         "caption": (
-            "💝 *Donate to Support Us*\n\n"
-            "👤 *ឈ្មោះ៖* BOUSIVLY KHEV\n"
-            "💳 *Wallet KHR៖* `005 920 170`\n\n"
-            "💳 *Wallet USD៖* `005 920 166`\n\n"
-            "សូមស្កេន KHQR ខាងលើដើម្បីឧបត្ថម្ភគាំទ្រ Career Center! សូមអរគុណច្រើន 🙏"
+            f"💝 *Donate to Support Us*\n\n"
+            f"👤 *ឈ្មោះ៖* {DONATE_NAME}\n"
+            f"💳 *Wallet KHR៖* `{DONATE_KHR}`\n\n"
+            f"💳 *Wallet USD៖* `{DONATE_USD}`\n\n"
+            f"សូមស្កេន KHQR ខាងលើដើម្បីឧបត្ថម្ភគាំទ្រ Career Center! សូមអរគុណច្រើន 🙏"
         ),
     },
 }
@@ -313,11 +328,11 @@ async def handle_callback(
                     chat_id=update.effective_chat.id,
                     photo=photo_file,
                     caption=(
-                        "💝 *Donate to Support Us*\n\n"
-                        "👤 *ឈ្មោះ៖* BOUSIVLY KHEV\n"
-                        "💳 *Wallet KHR៖* `005 920 170`\n\n"
-                        "💳 *Wallet USD៖* `005 920 166`\n\n"
-                        "សូមស្កេន KHQR ខាងលើដើម្បីឧបត្ថម្ភគាំទ្រ Career Center! សូមអរគុណច្រើន 🙏"
+                        f"💝 *Donate to Support Us*\n\n"
+                        f"👤 *ឈ្មោះ៖* {DONATE_NAME}\n"
+                        f"💳 *Wallet KHR៖* `{DONATE_KHR}`\n\n"
+                        f"💳 *Wallet USD៖* `{DONATE_USD}`\n\n"
+                        f"សូមស្កេន KHQR ខាងលើដើម្បីឧបត្ថម្ភគាំទ្រ Career Center! សូមអរគុណច្រើន 🙏"
                     ),
                     parse_mode="Markdown",
                 )
@@ -326,9 +341,9 @@ async def handle_callback(
             sent = await context.bot.send_message(
                 chat_id=update.effective_chat.id,
                 text=(
-                    "💝 *Donate to Support Us*\n\n"
-                    "👤 *ឈ្មោះ៖* SOR CHEATAMRIN\n"
-                    "💳 *Wallet KHR៖* `077 893 954`"
+                    f"💝 *Donate to Support Us*\n\n"
+                    f"👤 *ឈ្មោះ៖* {DONATE_NAME_ALT}\n"
+                    f"💳 *Wallet KHR៖* `{DONATE_KHR_ALT}`"
                 ),
                 parse_mode="Markdown",
             )
@@ -448,7 +463,7 @@ def start_health_check_server() -> None:
 
 def main():
     if not TOKEN:
-        raise RuntimeError("Bot token is not set. Please provide BOT_TOKEN.")
+        raise RuntimeError("BOT_TOKEN is not set. Please set BOT_TOKEN in your .env file or environment variables.")
 
     # Start health check server if running on Render / cloud provider with $PORT
     start_health_check_server()

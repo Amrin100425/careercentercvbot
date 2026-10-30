@@ -4,6 +4,11 @@ import logging
 import os
 import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 from telegram import (
     BotCommand,
     Update,
@@ -30,7 +35,9 @@ logging.basicConfig(
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
-TOKEN = os.getenv("BOT_TOKEN", "8835733877:AAG_JNtBjdc301dUFnAzpeh0K7nSMrabrbc")
+TOKEN = os.getenv("BOT_TOKEN")
+if not TOKEN or TOKEN == "BOT_TOKEN":
+    TOKEN = "8835733877:AAG_JNtBjdc301dUFnAzpeh0K7nSMrabrbc"
 
 # បង្កើត Reply Keyboard បង្ហាញនៅខាងក្រោមប្រអប់វាយអក្សរ (Under typing)
 reply_keyboard = [

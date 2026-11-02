@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import json
 import logging
 import os
@@ -54,21 +54,61 @@ DONATE_USD = os.getenv("DONATE_USD", "005 920 166")
 DONATE_NAME_ALT = os.getenv("DONATE_NAME_ALT", "SOR CHEATAMRIN")
 DONATE_KHR_ALT = os.getenv("DONATE_KHR_ALT", "077 893 954")
 
+# Telegram Premium Animated Custom Emoji IDs
+EMOJI_CV = os.getenv("EMOJI_CV")
+EMOJI_INTERVIEW = os.getenv("EMOJI_INTERVIEW")
+EMOJI_CAREER = os.getenv("EMOJI_CAREER")
+EMOJI_CHANNEL = os.getenv("EMOJI_CHANNEL")
+EMOJI_ADMIN = os.getenv("EMOJI_ADMIN")
+EMOJI_SUPPORT = os.getenv("EMOJI_SUPPORT")
+EMOJI_FACEBOOK = os.getenv("EMOJI_FACEBOOK")
+EMOJI_TIKTOK = os.getenv("EMOJI_TIKTOK")
+EMOJI_DONATE = os.getenv("EMOJI_DONATE")
+EMOJI_DOC = os.getenv("EMOJI_DOC")
+EMOJI_BULB = os.getenv("EMOJI_BULB")
+EMOJI_LINK = os.getenv("EMOJI_LINK")
+EMOJI_WAVE = os.getenv("EMOJI_WAVE")
+EMOJI_DOWN = os.getenv("EMOJI_DOWN")
+
+
+def tg_emoji(emoji_id: str | None, fallback: str) -> str:
+    """Format an animated custom emoji for HTML parse mode, or return fallback."""
+    if emoji_id:
+        return f'<tg-emoji emoji-id="{emoji_id}">{fallback}</tg-emoji>'
+    return fallback
+
+
+def make_reply_btn(text: str, emoji_id: str | None = None, fallback_icon: str = "") -> KeyboardButton:
+    """Create a KeyboardButton with custom emoji icon if provided."""
+    if emoji_id:
+        return KeyboardButton(text=text, icon_custom_emoji_id=emoji_id)
+    label = f"{fallback_icon} {text}".strip() if fallback_icon else text
+    return KeyboardButton(label)
+
+
+def make_inline_btn(text: str, emoji_id: str | None = None, fallback_icon: str = "", **kwargs) -> InlineKeyboardButton:
+    """Create an InlineKeyboardButton with custom emoji icon if provided."""
+    if emoji_id:
+        return InlineKeyboardButton(text=text, icon_custom_emoji_id=emoji_id, **kwargs)
+    label = f"{fallback_icon} {text}".strip() if fallback_icon else text
+    return InlineKeyboardButton(label, **kwargs)
+
+
 # បង្កើត Reply Keyboard បង្ហាញនៅខាងក្រោមប្រអប់វាយអក្សរ (Under typing)
 reply_keyboard = [
     [
-        KeyboardButton("✉️ CV & Cover Letter"),
-        KeyboardButton("💁‍♀️ គន្លឹះក្នុងការសម្ភាស"),
+        make_reply_btn("CV & Cover Letter", EMOJI_CV, "✉️"),
+        make_reply_btn("គន្លឹះក្នុងការសម្ភាស", EMOJI_INTERVIEW, "💁‍♀️"),
     ],
     [
-        KeyboardButton("💼 Career Tip"),
+        make_reply_btn("Career Tip", EMOJI_CAREER, "💼"),
     ],
     [
-        KeyboardButton("📢 CareerCenter Channel"),
-        KeyboardButton("🛡️ CareerCenter Admin"),
+        make_reply_btn("CareerCenter Channel", EMOJI_CHANNEL, "📢"),
+        make_reply_btn("CareerCenter Admin", EMOJI_ADMIN, "🛡️"),
     ],
     [
-        KeyboardButton("💝 Support Us"),
+        make_reply_btn("Support Us", EMOJI_SUPPORT or EMOJI_DONATE, "💝"),
     ],
 ]
 
@@ -81,112 +121,108 @@ menu = ReplyKeyboardMarkup(
 
 QR_IMAGE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "qr_donate.png")
 
+support_inline_keyboard = [
+    [
+        make_inline_btn(
+            "CareerCenter Facebook page",
+            emoji_id=EMOJI_FACEBOOK,
+            fallback_icon="❤️",
+            url=URL_FACEBOOK,
+        )
+    ],
+    [
+        make_inline_btn(
+            "CareerCenter Tiktok page",
+            emoji_id=EMOJI_TIKTOK,
+            fallback_icon="🎵",
+            url=URL_TIKTOK,
+        )
+    ],
+    [
+        make_inline_btn(
+            "Donate us",
+            emoji_id=EMOJI_DONATE,
+            fallback_icon="💸",
+            callback_data="donate_us",
+        )
+    ],
+]
+
 # កំណត់ព័ត៌មាន និង Link សម្រាប់ប៊ូតុងនីមួយៗ
 BUTTON_ACTIONS = {
-    "✉️ CV & Cover Letter": {
-        "text": "📄 *CV & Cover Letter*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីចូលទៅកាន់ Channel៖",
-        "btn_label": "🔗 ចូលទៅកាន់ CV & Cover Letter",
+    "CV & Cover Letter": {
+        "text": f"{tg_emoji(EMOJI_DOC, '📄')} <b>CV & Cover Letter</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីចូលទៅកាន់ Channel៖",
+        "btn_label": "ចូលទៅកាន់ CV & Cover Letter",
+        "btn_emoji": EMOJI_LINK,
+        "btn_fallback": "🔗",
         "url": URL_CV_CHANNEL,
     },
-    "💁‍♀️ គន្លឹះក្នុងការសម្ភាស": {
-        "text": "💡 *គន្លឹះក្នុងការសម្ភាសន៍*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលការណែនាំសម្ភាសន៍៖",
-        "btn_label": "🔗 ចូលទៅកាន់ គន្លឹះក្នុងការសម្ភាស",
+    "គន្លឹះក្នុងការសម្ភាស": {
+        "text": f"{tg_emoji(EMOJI_BULB, '💡')} <b>គន្លឹះក្នុងការសម្ភាសន៍</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលការណែនាំសម្ភាសន៍៖",
+        "btn_label": "ចូលទៅកាន់ គន្លឹះក្នុងការសម្ភាស",
+        "btn_emoji": EMOJI_LINK,
+        "btn_fallback": "🔗",
         "url": URL_INTERVIEW_TIP,
     },
-    "💁‍♀️ Interview Tip": {
-        "text": "💡 *Interview Tip*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលការណែនាំសម្ភាសន៍៖",
-        "btn_label": "🔗 ចូលទៅកាន់ Interview Tip",
+    "Interview Tip": {
+        "text": f"{tg_emoji(EMOJI_BULB, '💡')} <b>Interview Tip</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលការណែនាំសម្ភាសន៍៖",
+        "btn_label": "ចូលទៅកាន់ Interview Tip",
+        "btn_emoji": EMOJI_LINK,
+        "btn_fallback": "🔗",
         "url": URL_INTERVIEW_TIP,
     },
-    "💼 Career Tip": {
-        "text": "💼 *Career Tip*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលគន្លឹះការងារ៖",
-        "btn_label": "🔗 ចូលទៅកាន់ Career Tip",
+    "Career Tip": {
+        "text": f"{tg_emoji(EMOJI_CAREER, '💼')} <b>Career Tip</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលគន្លឹះការងារ៖",
+        "btn_label": "ចូលទៅកាន់ Career Tip",
+        "btn_emoji": EMOJI_LINK,
+        "btn_fallback": "🔗",
         "url": URL_CAREER_TIP,
     },
-    "📢 CareerCenter Channel": {
-        "text": "📢 *Career Center Channel*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលChannel៖",
-        "btn_label": "🔗 ចូលទៅកាន់ Career Center Channel",
+    "CareerCenter Channel": {
+        "text": f"{tg_emoji(EMOJI_CHANNEL, '📢')} <b>Career Center Channel</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលChannel៖",
+        "btn_label": "ចូលទៅកាន់ Career Center Channel",
+        "btn_emoji": EMOJI_LINK,
+        "btn_fallback": "🔗",
         "url": URL_CAREER_CHANNEL,
     },
-    "🛡️ CareerCenter Admin": {
-        "text": "🛡️ *CareerCenter Admin*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលAdmin៖",
-        "btn_label": "🔗 ចូលទៅកាន់ CareerCenter Admin",
+    "CareerCenter Admin": {
+        "text": f"{tg_emoji(EMOJI_ADMIN, '🛡️')} <b>CareerCenter Admin</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលAdmin៖",
+        "btn_label": "ចូលទៅកាន់ CareerCenter Admin",
+        "btn_emoji": EMOJI_LINK,
+        "btn_fallback": "🔗",
         "url": URL_ADMIN,
     },
-    "❤️ CC Facebook Page": {
-        "text": "❤️ *CC Facebook Page*\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីចូលទៅកាន់ Facebook Page៖",
-        "btn_label": "🔗 ចូលទៅកាន់ Facebook Page",
+    "CC Facebook Page": {
+        "text": f"{tg_emoji(EMOJI_FACEBOOK, '❤️')} <b>CC Facebook Page</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីចូលទៅកាន់ Facebook Page៖",
+        "btn_label": "ចូលទៅកាន់ Facebook Page",
+        "btn_emoji": EMOJI_LINK,
+        "btn_fallback": "🔗",
         "url": URL_FACEBOOK,
-    },
-    "💝 Support Us": {
-        "text": (
-            "💝 *Support Us / គាំទ្រពួកយើង*\n\n"
-            "សូមជ្រើសរើសជម្រើសខាងក្រោមដើម្បីគាំទ្រ Career Center៖"
-        ),
-        "inline_keyboard": [
-            [
-                InlineKeyboardButton(
-                    "❤️ CareerCenter Facebook page",
-                    url=URL_FACEBOOK,
-                )
-            ],
-            [
-                InlineKeyboardButton(
-                    "🎵 CareerCenter Tiktok page",
-                    url=URL_TIKTOK,
-                )
-            ],
-            [
-                InlineKeyboardButton(
-                    "💸 Donate us",
-                    callback_data="donate_us",
-                )
-            ],
-        ],
     },
     "Support Us": {
         "text": (
-            "💝 *Support Us / គាំទ្រពួកយើង*\n\n"
-            "សូមជ្រើសរើសជម្រើសខាងក្រោមដើម្បីគាំទ្រ Career Center៖"
+            f"{tg_emoji(EMOJI_SUPPORT or EMOJI_DONATE, '💝')} <b>Support Us / គាំទ្រពួកយើង</b>\n\n"
+            f"សូមជ្រើសរើសជម្រើសខាងក្រោមដើម្បីគាំទ្រ Career Center៖"
         ),
-        "inline_keyboard": [
-            [
-                InlineKeyboardButton(
-                    "❤️ CareerCenter Facebook page",
-                    url=URL_FACEBOOK,
-                )
-            ],
-            [
-                InlineKeyboardButton(
-                    "🎵 CareerCenter Tiktok page",
-                    url=URL_TIKTOK,
-                )
-            ],
-            [
-                InlineKeyboardButton(
-                    "💸 Donate us",
-                    callback_data="donate_us",
-                )
-            ],
-        ],
+        "inline_keyboard": support_inline_keyboard,
     },
-    "💝 Donate to Support Us": {
+    "Donate to Support Us": {
         "photo": QR_IMAGE_PATH,
         "caption": (
-            f"💝 *Donate to Support Us*\n\n"
-            f"👤 *ឈ្មោះ៖* {DONATE_NAME}\n"
-            f"💳 *Wallet KHR៖* `{DONATE_KHR}`\n\n"
-            f"💳 *Wallet USD៖* `{DONATE_USD}`\n\n"
+            f"{tg_emoji(EMOJI_DONATE, '💝')} <b>Donate to Support Us</b>\n\n"
+            f"👤 <b>ឈ្មោះ៖</b> {DONATE_NAME}\n"
+            f"💳 <b>Wallet KHR៖</b> <code>{DONATE_KHR}</code>\n\n"
+            f"💳 <b>Wallet USD៖</b> <code>{DONATE_USD}</code>\n\n"
             f"សូមស្កេន KHQR ខាងលើដើម្បីឧបត្ថម្ភគាំទ្រ Career Center! សូមអរគុណច្រើន 🙏"
         ),
     },
     "Donate us": {
         "photo": QR_IMAGE_PATH,
         "caption": (
-            f"💝 *Donate to Support Us*\n\n"
-            f"👤 *ឈ្មោះ៖* {DONATE_NAME}\n"
-            f"💳 *Wallet KHR៖* `{DONATE_KHR}`\n\n"
-            f"💳 *Wallet USD៖* `{DONATE_USD}`\n\n"
+            f"{tg_emoji(EMOJI_DONATE, '💝')} <b>Donate to Support Us</b>\n\n"
+            f"👤 <b>ឈ្មោះ៖</b> {DONATE_NAME}\n"
+            f"💳 <b>Wallet KHR៖</b> <code>{DONATE_KHR}</code>\n\n"
+            f"💳 <b>Wallet USD៖</b> <code>{DONATE_USD}</code>\n\n"
             f"សូមស្កេន KHQR ខាងលើដើម្បីឧបត្ថម្ភគាំទ្រ Career Center! សូមអរគុណច្រើន 🙏"
         ),
     },
@@ -289,6 +325,16 @@ async def clear_chat(
                     pass
 
 
+def find_button_action(text: str) -> dict | None:
+    if not text:
+        return None
+    if text in BUTTON_ACTIONS:
+        return BUTTON_ACTIONS[text]
+    # Strip any leading fallback emojis and spaces
+    clean = text.lstrip("✉️💁‍♀️💼📢🛡️❤️💝💸💡📄🔗🎵 ").strip()
+    return BUTTON_ACTIONS.get(clean)
+
+
 async def start(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
@@ -299,17 +345,19 @@ async def start(
         username_part = f"({user.username})" if user.username else ""
         user_display = f"{name}".strip() if username_part else (name or "មិត្តភក្តិ")
         welcome_text = (
-            f"ជម្រាបសួរ {user_display} \n\nសូមស្វាគមន៍មកកាន់ Career Center CV Bot! 👋\n\n"
-            f"សូមជ្រើសរើស Menu ខាងក្រោម 👇"
+            f"ជម្រាបសួរ {user_display} \n\n"
+            f"សូមស្វាគមន៍មកកាន់ Career Center CV Bot! {tg_emoji(EMOJI_WAVE, '👋')}\n\n"
+            f"សូមជ្រើសរើស Menu ខាងក្រោម {tg_emoji(EMOJI_DOWN, '👇')}"
         )
     else:
-        welcome_text = "សូមស្វាគមន៍! សូមជ្រើសរើស Menu ខាងក្រោម 👇"
+        welcome_text = f"សូមស្វាគមន៍! សូមជ្រើសរើស Menu ខាងក្រោម {tg_emoji(EMOJI_DOWN, '👇')}"
 
     if update.message:
         track_message(context, update.effective_chat.id, update.message.message_id)
     sent = await update.message.reply_text(
         welcome_text,
-        reply_markup=menu
+        reply_markup=menu,
+        parse_mode="HTML",
     )
     track_message(context, update.effective_chat.id, sent.message_id)
 
@@ -328,24 +376,24 @@ async def handle_callback(
                     chat_id=update.effective_chat.id,
                     photo=photo_file,
                     caption=(
-                        f"💝 *Donate to Support Us*\n\n"
-                        f"👤 *ឈ្មោះ៖* {DONATE_NAME}\n"
-                        f"💳 *Wallet KHR៖* `{DONATE_KHR}`\n\n"
-                        f"💳 *Wallet USD៖* `{DONATE_USD}`\n\n"
+                        f"{tg_emoji(EMOJI_DONATE, '💝')} <b>Donate to Support Us</b>\n\n"
+                        f"👤 <b>ឈ្មោះ៖</b> {DONATE_NAME}\n"
+                        f"💳 <b>Wallet KHR៖</b> <code>{DONATE_KHR}</code>\n\n"
+                        f"💳 <b>Wallet USD៖</b> <code>{DONATE_USD}</code>\n\n"
                         f"សូមស្កេន KHQR ខាងលើដើម្បីឧបត្ថម្ភគាំទ្រ Career Center! សូមអរគុណច្រើន 🙏"
                     ),
-                    parse_mode="Markdown",
+                    parse_mode="HTML",
                 )
                 track_message(context, update.effective_chat.id, sent.message_id)
         else:
             sent = await context.bot.send_message(
                 chat_id=update.effective_chat.id,
                 text=(
-                    f"💝 *Donate to Support Us*\n\n"
-                    f"👤 *ឈ្មោះ៖* {DONATE_NAME_ALT}\n"
-                    f"💳 *Wallet KHR៖* `{DONATE_KHR_ALT}`"
+                    f"{tg_emoji(EMOJI_DONATE, '💝')} <b>Donate to Support Us</b>\n\n"
+                    f"👤 <b>ឈ្មោះ៖</b> {DONATE_NAME_ALT}\n"
+                    f"💳 <b>Wallet KHR៖</b> <code>{DONATE_KHR_ALT}</code>"
                 ),
-                parse_mode="Markdown",
+                parse_mode="HTML",
             )
             track_message(context, update.effective_chat.id, sent.message_id)
 
@@ -354,20 +402,34 @@ async def handle_message(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
 ):
-    if not update.message or not update.message.text:
+    if not update.message:
+        return
+
+    # 🔍 Animated Custom Emoji Inspector:
+    # If the user sends any animated custom emoji to the bot, reply with its ID
+    if update.message.entities:
+        for ent in update.message.entities:
+            if ent.type == "custom_emoji" and ent.custom_emoji_id:
+                await update.message.reply_html(
+                    f"✨ <b>Detected Animated Emoji ID:</b>\n"
+                    f"<code>{ent.custom_emoji_id}</code>\n\n"
+                    f"👉 Copy this number into your <code>.env</code> file!"
+                )
+                return
+
+    if not update.message.text:
         return
 
     track_message(context, update.effective_chat.id, update.message.message_id)
     user_text = update.message.text.strip()
+    action = find_button_action(user_text)
 
-    if user_text in BUTTON_ACTIONS:
+    if action:
         # លុបសារដែល User ចុចប៊ូតុងដើម្បីឱ្យ Chat មើលទៅស្អាត មិនរញ៉េរញ៉ៃ (Auto-delete)
         try:
             await update.message.delete()
         except Exception:
             pass
-
-        action = BUTTON_ACTIONS[user_text]
 
         # ប្រសិនបើប៊ូតុងមាន sub-buttons (Inline keyboard)
         if "inline_keyboard" in action:
@@ -375,7 +437,7 @@ async def handle_message(
                 chat_id=update.effective_chat.id,
                 text=action.get("text", ""),
                 reply_markup=InlineKeyboardMarkup(action["inline_keyboard"]),
-                parse_mode="Markdown",
+                parse_mode="HTML",
             )
             track_message(context, update.effective_chat.id, sent.message_id)
         # ប្រសិនបើប៊ូតុងជាប្រភេទរូបភាព (ឧទាហរណ៍៖ QR Code Donate)
@@ -385,26 +447,33 @@ async def handle_message(
                     chat_id=update.effective_chat.id,
                     photo=photo_file,
                     caption=action.get("caption", ""),
-                    parse_mode="Markdown",
+                    parse_mode="HTML",
                 )
                 track_message(context, update.effective_chat.id, sent.message_id)
         else:
             inline_btn = None
             if "btn_label" in action and "url" in action:
-                inline_btn = InlineKeyboardMarkup([
-                    [InlineKeyboardButton(action["btn_label"], url=action["url"])]
-                ])
+                btn_emoji = action.get("btn_emoji")
+                btn_fallback = action.get("btn_fallback", "🔗")
+                btn_obj = make_inline_btn(
+                    action["btn_label"],
+                    emoji_id=btn_emoji,
+                    fallback_icon=btn_fallback,
+                    url=action["url"],
+                )
+                inline_btn = InlineKeyboardMarkup([[btn_obj]])
             sent = await context.bot.send_message(
                 chat_id=update.effective_chat.id,
                 text=action.get("text", ""),
                 reply_markup=inline_btn,
-                parse_mode="Markdown",
+                parse_mode="HTML",
             )
             track_message(context, update.effective_chat.id, sent.message_id)
     else:
         sent = await update.message.reply_text(
-            "សូមជ្រើសរើស Menu ខាងក្រោម 👇",
-            reply_markup=menu
+            f"សូមជ្រើសរើស Menu ខាងក្រោម {tg_emoji(EMOJI_DOWN, '👇')}",
+            reply_markup=menu,
+            parse_mode="HTML",
         )
         track_message(context, update.effective_chat.id, sent.message_id)
 

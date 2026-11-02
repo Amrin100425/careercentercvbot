@@ -55,41 +55,41 @@ DONATE_NAME_ALT = os.getenv("DONATE_NAME_ALT", "SOR CHEATAMRIN")
 DONATE_KHR_ALT = os.getenv("DONATE_KHR_ALT", "077 893 954")
 
 # Telegram Premium Animated Custom Emoji IDs
-EMOJI_CV = os.getenv("EMOJI_CV")
-EMOJI_INTERVIEW = os.getenv("EMOJI_INTERVIEW")
-EMOJI_CAREER = os.getenv("EMOJI_CAREER")
-EMOJI_CHANNEL = os.getenv("EMOJI_CHANNEL", "5836698068061261980")
-EMOJI_ADMIN = os.getenv("EMOJI_ADMIN", "6129805886383723340")
-EMOJI_SUPPORT = os.getenv("EMOJI_SUPPORT", "5244837092042750681")
-EMOJI_FACEBOOK = os.getenv("EMOJI_FACEBOOK")
-EMOJI_TIKTOK = os.getenv("EMOJI_TIKTOK")
-EMOJI_DONATE = os.getenv("EMOJI_DONATE", "5244837092042750681")
-EMOJI_DOC = os.getenv("EMOJI_DOC")
-EMOJI_BULB = os.getenv("EMOJI_BULB")
-EMOJI_LINK = os.getenv("EMOJI_LINK")
-EMOJI_WAVE = os.getenv("EMOJI_WAVE")
-EMOJI_DOWN = os.getenv("EMOJI_DOWN")
+EMOJI_CV = os.getenv("EMOJI_CV") or ""
+EMOJI_INTERVIEW = os.getenv("EMOJI_INTERVIEW") or ""
+EMOJI_CAREER = os.getenv("EMOJI_CAREER") or ""
+EMOJI_CHANNEL = os.getenv("EMOJI_CHANNEL") or "5836698068061261980"
+EMOJI_ADMIN = os.getenv("EMOJI_ADMIN") or "5981233226629256657"
+EMOJI_SUPPORT = os.getenv("EMOJI_SUPPORT") or "5244837092042750681"
+EMOJI_FACEBOOK = os.getenv("EMOJI_FACEBOOK") or "5314696663552513826"
+EMOJI_TIKTOK = os.getenv("EMOJI_TIKTOK") or "5474131686440584294"
+EMOJI_DONATE = os.getenv("EMOJI_DONATE") or "5197434882321567830"
+EMOJI_DOC = os.getenv("EMOJI_DOC") or "5431420628978641216"
+EMOJI_BULB = os.getenv("EMOJI_BULB") or ""
+EMOJI_LINK = os.getenv("EMOJI_LINK") or "5271604874419647061"
+EMOJI_WAVE = os.getenv("EMOJI_WAVE") or ""
+EMOJI_DOWN = os.getenv("EMOJI_DOWN") or ""
 
 
 def tg_emoji(emoji_id: str | None, fallback: str) -> str:
     """Format an animated custom emoji for HTML parse mode, or return fallback."""
-    if emoji_id:
-        return f'<tg-emoji emoji-id="{emoji_id}">{fallback}</tg-emoji>'
+    if emoji_id and str(emoji_id).strip():
+        return f'<tg-emoji emoji-id="{str(emoji_id).strip()}">{fallback}</tg-emoji>'
     return fallback
 
 
 def make_reply_btn(text: str, emoji_id: str | None = None, fallback_icon: str = "") -> KeyboardButton:
     """Create a KeyboardButton with custom emoji icon if provided."""
-    if emoji_id:
-        return KeyboardButton(text=text, icon_custom_emoji_id=emoji_id)
+    if emoji_id and str(emoji_id).strip():
+        return KeyboardButton(text=text, icon_custom_emoji_id=str(emoji_id).strip())
     label = f"{fallback_icon} {text}".strip() if fallback_icon else text
     return KeyboardButton(label)
 
 
 def make_inline_btn(text: str, emoji_id: str | None = None, fallback_icon: str = "", **kwargs) -> InlineKeyboardButton:
     """Create an InlineKeyboardButton with custom emoji icon if provided."""
-    if emoji_id:
-        return InlineKeyboardButton(text=text, icon_custom_emoji_id=emoji_id, **kwargs)
+    if emoji_id and str(emoji_id).strip():
+        return InlineKeyboardButton(text=text, icon_custom_emoji_id=str(emoji_id).strip(), **kwargs)
     label = f"{fallback_icon} {text}".strip() if fallback_icon else text
     return InlineKeyboardButton(label, **kwargs)
 

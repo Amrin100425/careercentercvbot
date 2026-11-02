@@ -67,8 +67,8 @@ EMOJI_DONATE = os.getenv("EMOJI_DONATE") or "5197434882321567830"
 EMOJI_DOC = os.getenv("EMOJI_DOC") or "5431420628978641216"
 EMOJI_BULB = os.getenv("EMOJI_BULB") or ""
 EMOJI_LINK = os.getenv("EMOJI_LINK") or "5271604874419647061"
-EMOJI_WAVE = os.getenv("EMOJI_WAVE") or ""
-EMOJI_DOWN = os.getenv("EMOJI_DOWN") or ""
+EMOJI_WAVE = os.getenv("EMOJI_WAVE") or "5334863012475986105"
+EMOJI_DOWN = os.getenv("EMOJI_DOWN") or "5411322793373477644"
 
 
 def tg_emoji(emoji_id: str | None, fallback: str) -> str:

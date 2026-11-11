@@ -17,6 +17,7 @@ from telegram import (
     InlineKeyboardMarkup,
     InlineKeyboardButton,
 )
+from telegram.error import BadRequest
 from telegram.request import HTTPXRequest
 from telegram.ext import (
     Application,
@@ -76,197 +77,126 @@ EMOJI_FAQ = os.getenv("EMOJI_FAQ") or ""
 # ──────────────────────────────────────────────────────────────
 FAQ_ITEMS = [
     {
+        "title": "📄 ចំនួនទំព័រ CV",
         "q": "តើ CV ល្អគួរមានប៉ុន្មានទំព័រ?",
         "a": (
             "📄 <b>តើ CV ល្អគួរមានប៉ុន្មានទំព័រ?</b>\n\n"
-            "សម្រាប់និស្សិតថ្មី ឬអ្នកមានបទពិសោធន៍តិចជាង ៥ ឆ្នាំ CV គួរមាន <b>១ ទំព័រ</b> ប៉ុណ្ណោះ។\n\n"
-            "បើមានបទពិសោធន៍ច្រើនជាង ៥ ឆ្នាំ អាចមាន <b>២ ទំព័រ</b> ក៏បាន។\n\n"
+            "• សម្រាប់និស្សិតថ្មី ឬអ្នកមានបទពិសោធន៍តិចជាង ៥ ឆ្នាំ: CV គួរមាន <b>១ ទំព័រ</b> ប៉ុណ្ណោះ។\n"
+            "• បើមានបទពិសោធន៍ច្រើនជាង ៥ ឆ្នាំ: អាចមាន <b>២ ទំព័រ</b> ក៏បាន។\n\n"
             "💡 <b>គន្លឹះ:</b> ផ្ដោតលើព័ត៌មានសំខាន់ៗ និងពាក់ព័ន្ធនឹងមុខតំណែងដែលអ្នកដាក់ស្នើ។"
         ),
     },
     {
+        "title": "📝 ព័ត៌មានក្នុង CV",
         "q": "តើ CV ត្រូវមានអ្វីខ្លះ?",
         "a": (
             "📝 <b>តើ CV ត្រូវមានអ្វីខ្លះ?</b>\n\n"
             "CV ល្អគួរមាន៖\n"
-            "1️⃣ ព័ត៌មានផ្ទាល់ខ្លួន (ឈ្មោះ ទូរស័ព្ទ Email)\n"
-            "2️⃣ សង្ខេបអំពីខ្លួនឯង (Professional Summary)\n"
-            "3️⃣ បទពិសោធន៍ការងារ\n"
-            "4️⃣ ការអប់រំ\n"
-            "5️⃣ ជំនាញ (Skills)\n"
-            "6️⃣ សមិទ្ធិផល ឬ វិញ្ញាបនបត្រ\n\n"
+            "1️⃣ <b>ព័ត៌មានផ្ទាល់ខ្លួន:</b> ឈ្មោះ ទូរស័ព្ទ Email ទីលំនៅ\n"
+            "2️⃣ <b>សង្ខេបអំពីខ្លួនឯង:</b> Professional Summary\n"
+            "3️⃣ <b>បទពិសោធន៍ការងារ:</b> រៀបរាប់ពីថ្មីទៅចាស់\n"
+            "4️⃣ <b>ការអប់រំ:</b> កម្រិតវប្បធម៌ ឬសញ្ញាបត្រ\n"
+            "5️⃣ <b>ជំនាញ (Skills):</b> ជំនាញរឹង និងជំនាញទន់\n"
+            "6️⃣ <b>សមិទ្ធិផល ឬ ភាសា:</b> ភាសាបរទេស វគ្គខ្លីៗ\n\n"
             "💡 <b>គន្លឹះ:</b> កែសម្រួល CV ឱ្យសមស្របនឹងមុខតំណែងនីមួយៗ។"
         ),
     },
     {
+        "title": "✉️ Cover Letter",
         "q": "តើ Cover Letter សំខាន់ទេ?",
         "a": (
             "✉️ <b>តើ Cover Letter សំខាន់ទេ?</b>\n\n"
-            "<b>សំខាន់ណាស់!</b> Cover Letter ជួយឱ្យអ្នកគ្រប់គ្រងជ្រើសរើសស្គាល់ "
-            "អ្នកកាន់តែច្បាស់ អំពីចំណាប់អារម្មណ៍ និង ហេតុផលដែលអ្នកចង់ធ្វើការងារនោះ។\n\n"
-            "💡 <b>គន្លឹះ:</b> សរសេរ Cover Letter ខុសគ្នាសម្រាប់ក្រុមហ៊ុនម្តងៗ កុំប្រើមួយដដែល។"
+            "<b>សំខាន់ណាស់!</b> Cover Letter ជួយឱ្យអ្នកជ្រើសរើសស្គាល់អ្នកកាន់តែច្បាស់ "
+            "អំពីចំណាប់អារម្មណ៍ និងហេតុផលដែលអ្នកចង់ធ្វើការងារនោះ។\n\n"
+            "• បង្ហាញពីចំណុចពិសេសដែល CV មិនអាចបង្ហាញ\n"
+            "• បង្ហាញពីការតាំងចិត្ត និងចំណេះដឹងអំពីក្រុមហ៊ុន\n\n"
+            "💡 <b>គន្លឹះ:</b> សរសេរ Cover Letter ខុសៗគ្នាសម្រាប់ក្រុមហ៊ុននីមួយៗ កុំប្រើមួយដដែលៗ។"
         ),
     },
     {
+        "title": "🎯 ការត្រៀមសម្ភាស",
         "q": "តើត្រូវរៀបចំខ្លួនយ៉ាងម៉េចមុនសម្ភាស?",
         "a": (
             "🎯 <b>តើត្រូវរៀបចំខ្លួនយ៉ាងម៉េចមុនសម្ភាស?</b>\n\n"
-            "1️⃣ ស្រាវជ្រាវអំពីក្រុមហ៊ុន និង មុខតំណែង\n"
-            "2️⃣ រៀបចំចម្លើយសម្រាប់សំណួរទូទៅ\n"
-            "3️⃣ រៀបចំសម្លៀកបំពាក់ឱ្យសមរម្យ\n"
-            "4️⃣ នាំ CV មួយច្បាប់បន្ថែម\n"
-            "5️⃣ ទៅដល់មុន ១០-១៥ នាទី\n\n"
-            "💡 <b>គន្លឹះ:</b> អនុវត្តសម្ភាសន៍ជាមួយមិត្តភ័ក្តិ ដើម្បីបង្កើនទំនុកចិត្ត។"
+            "1️⃣ <b>ស្រាវជ្រាវ:</b> ស្វែងយល់ពីក្រុមហ៊ុន និងមុខតំណែង\n"
+            "2️⃣ <b>ត្រៀមចម្លើយ:</b> សម្រាប់សំណួរទូទៅ និងសំណួរបច្ចេកទេស\n"
+            "3️⃣ <b>សម្លៀកបំពាក់:</b> ស្លៀកពាក់ឱ្យសមរម្យ មានរបៀបរៀបរយ\n"
+            "4️⃣ <b>ឯកសារ:</b> យក CV និងឯកសារពាក់ព័ន្ធមួយច្បាប់បន្ថែម\n"
+            "5️⃣ <b>ពេលវេលា:</b> ទៅដល់មុន ១០-១៥ នាទី\n\n"
+            "💡 <b>គន្លឹះ:</b> អនុវត្តសម្ភាសន៍សាកល្បងជាមួយមិត្តភ័ក្តិ ដើម្បីបង្កើនទំនុកចិត្ត។"
         ),
     },
     {
+        "title": "🗣️ សំណួរសម្ភាស",
         "q": "សំណួរសម្ភាសដែលគេសួរញឹកញាប់?",
         "a": (
             "🗣️ <b>សំណួរសម្ភាសដែលគេសួរញឹកញាប់</b>\n\n"
             "1️⃣ ប្រាប់ខ្ញុំអំពីខ្លួនអ្នក?\n"
             "2️⃣ ហេតុអ្វីបានជាអ្នកចង់ធ្វើការនៅទីនេះ?\n"
-            "3️⃣ តើចំណុចខ្លាំង និង ចំណុចខ្សោយរបស់អ្នកគឺជាអ្វី?\n"
+            "3️⃣ តើចំណុចខ្លាំង និងចំណុចខ្សោយរបស់អ្នកគឺជាអ្វី?\n"
             "4️⃣ ប្រាប់ខ្ញុំអំពីបញ្ហាដែលអ្នកធ្លាប់ដោះស្រាយ?\n"
             "5️⃣ តើអ្នករំពឹងប្រាក់ខែប៉ុន្មាន?\n\n"
-            "💡 <b>គន្លឹះ:</b> រៀបចំចម្លើយដោយប្រើវិធី STAR (Situation, Task, Action, Result)។"
+            "💡 <b>គន្លឹះ:</b> រៀបចំចម្លើយដោយប្រើវិធី <b>STAR</b> (Situation, Task, Action, Result)។"
         ),
     },
     {
+        "title": "🚫 កំហុសក្នុង CV",
         "q": "តើអ្វីខ្លះដែលមិនគួរដាក់ក្នុង CV?",
         "a": (
             "🚫 <b>តើអ្វីខ្លះដែលមិនគួរដាក់ក្នុង CV?</b>\n\n"
-            "❌ រូបថតមិនសមរម្យ\n"
-            "❌ ព័ត៌មានផ្ទាល់ខ្លួនច្រើនពេក (ស្ថានភាពគ្រួសារ សាសនា...)\n"
-            "❌ ប្រវត្តិការងារដែលមិនពាក់ព័ន្ធ\n"
-            "❌ ប្រាក់ខែចាស់\n"
-            "❌ ហេតុផលចាកចេញពីការងារចាស់\n"
+            "❌ រូបថតមិនសមរម្យ (រូប Selfie ឬរូបលេងសើច)\n"
+            "❌ ព័ត៌មានផ្ទាល់ខ្លួនដែលមិនចាំបាច់ (ស្ថានភាពគ្រួសារ សាសនា...)\n"
+            "❌ ប្រវត្តិការងារដែលមិនទាក់ទងនឹងការងារថ្មី\n"
+            "❌ ប្រាក់ខែចាស់ ឬប្រាក់ខែរំពឹងទុក\n"
+            "❌ មូលហេតុចាកចេញពីការងារចាស់\n"
             "❌ ព័ត៌មានមិនពិត\n\n"
-            "💡 <b>គន្លឹះ:</b> ដាក់តែព័ត៌មានដែលបង្ហាញតម្លៃរបស់អ្នកសម្រាប់ក្រុមហ៊ុន។"
+            "💡 <b>គន្លឹះ:</b> ដាក់តែព័ត៌មានដែលបន្ថែមតម្លៃដល់អ្នក។"
         ),
     },
     {
-        "q": "តើគួរផ្ញើ CV តាមអ្វី?",
+        "title": "📧 របៀបផ្ញើ CV",
+        "q": "តើគួរផ្ញើ CV តាមរបៀបណា?",
         "a": (
-            "📧 <b>តើគួរផ្ញើ CV តាមអ្វី?</b>\n\n"
-            "✅ ផ្ញើតាម <b>Email</b> ជាទម្រង់ <b>PDF</b>\n"
-            "✅ ដាក់ Subject Email ឱ្យច្បាស់ (ឧ. Application for Marketing Position - [ឈ្មោះ])\n"
-            "✅ សរសេរ Email Body ខ្លីៗ ស៊ុបស៊ីម\n\n"
-            "💡 <b>គន្លឹះ:</b> កុំផ្ញើជា Word Document ព្រោះវាអាចផ្លាស់ប្ដូរទម្រង់នៅលើកុំព្យូទ័រផ org។"
+            "📧 <b>តើគួរផ្ញើ CV តាមរបៀបណា?</b>\n\n"
+            "✅ ផ្ញើតាម <b>Email</b> ជាឯកសារ <b>PDF</b> ជានិច្ច\n"
+            "✅ ដាក់ Subject Email ឱ្យច្បាស់:\n"
+            "   <i>ឧ. ពាក្យស្នើសុំការងារ - [ឈ្មោះ] - [មុខតំណែង]</i>\n"
+            "✅ សរសេរ Cover Message ខ្លីៗ និងគួរសមក្នុង Email Body\n"
+            "✅ ពិនិត្យឯកសារភ្ជាប់មុនពេលចុច Send\n\n"
+            "💡 <b>គន្លឹះ:</b> កុំផ្ញើជា Word Document ព្រោះទម្រង់អាចខូចនៅលើឧបករណ៍ផ្សេង។"
         ),
     },
     {
+        "title": "📩 ក្រោយសម្ភាសន៍",
         "q": "តើគួរធ្វើអ្វីបន្ទាប់ពីសម្ភាស?",
         "a": (
             "📩 <b>តើគួរធ្វើអ្វីបន្ទាប់ពីសម្ភាស?</b>\n\n"
             "1️⃣ ផ្ញើ <b>Thank You Email</b> ក្នុងរយៈពេល ២៤ ម៉ោង\n"
-            "2️⃣ សម្ដែងការដឹងគុណចំពោះឱកាorg\n"
-            "3️⃣ រំលឹកពីចំណាប់អារម្មណ៍របស់អ្នកក្នុងមុខតំណែង\n"
-            "4️⃣ រង់ចាំចម្លើយតាមពេលវេorg កំណត់\n\n"
-            "💡 <b>គន្លឹះ:</b> បើមិនឆ org ២ សប្ដorg Follow up ម្ដorg បាន។"
-        ),
-    },
-]
-# ──────────────────────────────────────────────────────────────
-# FAQ: សំណួរ និង ចម្លើយ អំពី Career និង CV
-# ──────────────────────────────────────────────────────────────
-FAQ_ITEMS = [
-    {
-        "q": "តើ CV ល្អគួរមានប៉ុន្មានទំព័រ?",
-        "a": (
-            "📄 <b>តើ CV ល្អគួរមានប៉ុន្មានទំព័រ?</b>\n\n"
-            "សម្រាប់និស្សិតថ្មី ឬអ្នកមានបទពិសោធន៍តិចជាង ៥ ឆ្នាំ CV គួរមាន <b>១ ទំព័រ</b> ប៉ុណ្ណោះ។\n\n"
-            "បើមានបទពិសោធន៍ច្រើនជាង ៥ ឆ្នាំ អាចមាន <b>២ ទំព័រ</b> ក៏បាន។\n\n"
-            "💡 <b>គន្លឹះ:</b> ផ្ដោតលើព័ត៌មានសំខាន់ៗ និងពាក់ព័ន្ធនឹងមុខតំណែងដែលអ្នកដាក់ស្នើ។"
-        ),
-    },
-    {
-        "q": "តើ CV ត្រូវមានអ្វីខ្លះ?",
-        "a": (
-            "📝 <b>តើ CV ត្រូវមានអ្វីខ្លះ?</b>\n\n"
-            "CV ល្អគួរមាន៖\n"
-            "1️⃣ ព័ត៌មានផ្ទាល់ខ្លួន (ឈ្មោះ ទូរស័ព្ទ Email)\n"
-            "2️⃣ សង្ខេបអំពីខ្លួនឯង (Professional Summary)\n"
-            "3️⃣ បទពិសោធន៍ការងារ\n"
-            "4️⃣ ការអប់រំ\n"
-            "5️⃣ ជំនាញ (Skills)\n"
-            "6️⃣ សមិទ្ធិផល ឬ វិញ្ញាបនបត្រ\n\n"
-            "💡 <b>គន្លឹះ:</b> កែសម្រួល CV ឱ្យសមស្របនឹងមុខតំណែងនីមួយៗ។"
-        ),
-    },
-    {
-        "q": "តើ Cover Letter សំខាន់ទេ?",
-        "a": (
-            "✉️ <b>តើ Cover Letter សំខាន់ទេ?</b>\n\n"
-            "<b>សំខាន់ណាស់!</b> Cover Letter ជួយឱ្យអ្នកគ្រប់គ្រងជ្រើសរើសស្គាល់ "
-            "អ្នកកាន់តែច្បាស់ អំពីចំណាប់អារម្មណ៍ និង ហេតុផលដែលអ្នកចង់ធ្វើការងារនោះ។\n\n"
-            "💡 <b>គន្លឹះ:</b> សរសេរ Cover Letter ខុសគ្នាសម្រាប់ក្រុមហ៊ុនម្តងៗ កុំប្រើមួយដដែល។"
-        ),
-    },
-    {
-        "q": "តើត្រូវរៀបចំខ្លួនយ៉ាងម៉េចមុនសម្ភាស?",
-        "a": (
-            "🎯 <b>តើត្រូវរៀបចំខ្លួនយ៉ាងម៉េចមុនសម្ភាស?</b>\n\n"
-            "1️⃣ ស្រាវជ្រាវអំពីក្រុមហ៊ុន និង មុខតំណែង\n"
-            "2️⃣ រៀបចំចម្លើយសម្រាប់សំណួរទូទៅ\n"
-            "3️⃣ រៀបចំសម្លៀកបំពាក់ឱ្យសមរម្យ\n"
-            "4️⃣ នាំ CV មួយច្បាប់បន្ថែម\n"
-            "5️⃣ ទៅដល់មុន ១០-១៥ នាទី\n\n"
-            "💡 <b>គន្លឹះ:</b> អនុវត្តសម្ភាសន៍ជាមួយមិត្តភ័ក្តិ ដើម្បីបង្កើនទំនុកចិត្ត។"
-        ),
-    },
-    {
-        "q": "សំណួរសម្ភាសដែលគេសួរញឹកញាប់?",
-        "a": (
-            "🗣️ <b>សំណួរសម្ភាសដែលគេសួរញឹកញាប់</b>\n\n"
-            "1️⃣ ប្រាប់ខ្ញុំអំពីខ្លួនអ្នក?\n"
-            "2️⃣ ហេតុអ្វីបានជាអ្នកចង់ធ្វើការនៅទីនេះ?\n"
-            "3️⃣ តើចំណុចខ្លាំង និង ចំណុចខ្សោយរបស់អ្នកគឺជាអ្វី?\n"
-            "4️⃣ ប្រាប់ខ្ញុំអំពីបញ្ហាដែលអ្នកធ្លាប់ដោះស្រាយ?\n"
-            "5️⃣ តើអ្នករំពឹងប្រាក់ខែប៉ុន្មាន?\n\n"
-            "💡 <b>គន្លឹះ:</b> រៀបចំចម្លើយដោយប្រើវិធី STAR (Situation, Task, Action, Result)។"
-        ),
-    },
-    {
-        "q": "តើអ្វីខ្លះដែលមិនគួរដាក់ក្នុង CV?",
-        "a": (
-            "🚫 <b>តើអ្វីខ្លះដែលមិនគួរដាក់ក្នុង CV?</b>\n\n"
-            "❌ រូបថតមិនសមរម្យ\n"
-            "❌ ព័ត៌មានផ្ទាល់ខ្លួនច្រើនពេក (ស្ថានភាពគ្រួសារ សាសនា...)\n"
-            "❌ ប្រវត្តិការងារដែលមិនពាក់ព័ន្ធ\n"
-            "❌ ប្រាក់ខែចាស់\n"
-            "❌ ហេតុផលចាកចេញពីការងារចាស់\n"
-            "❌ ព័ត៌មានមិនពិត\n\n"
-            "💡 <b>គន្លឹះ:</b> ដាក់តែព័ត៌មានដែលបង្ហាញតម្លៃរបស់អ្នកសម្រាប់ក្រុមហ៊ុន។"
-        ),
-    },
-    {
-        "q": "តើគួរផ្ញើ CV តាមអ្វី?",
-        "a": (
-            "📧 <b>តើគួរផ្ញើ CV តាមអ្វី?</b>\n\n"
-            "✅ ផ្ញើតាម <b>Email</b> ជាទម្រង់ <b>PDF</b>\n"
-            "✅ ដាក់ Subject Email ឱ្យច្បាស់ (ឧ. Application for Marketing Position - [ឈ្មោះ])\n"
-            "✅ សរសេរ Email Body ខ្លីៗ ស៊ុបស៊ីម\n\n"
-            "💡 <b>គន្លឹះ:</b> កុំផ្ញើជា Word Document ព្រោះវាអាចផ្លាស់ប្ដូរទម្រង់នៅលើកុំព្យូទ័រផ្សេង។"
-        ),
-    },
-    {
-        "q": "តើគួរធ្វើអ្វីបន្ទាប់ពីសម្ភាស?",
-        "a": (
-            "📩 <b>តើគួរធ្វើអ្វីបន្ទាប់ពីសម្ភាស?</b>\n\n"
-            "1️⃣ ផ្ញើ <b>Thank You Email</b> ក្នុងរយៈពេល ២៤ ម៉ោង\n"
-            "2️⃣ សម្ដែងការដឹងគុណចំពោះឱកាorg\n"
-            "3️⃣ រំលឹកពីចំណាប់អារម្មណ៍របស់អ្នកក្នុងមុខតំណែង\n"
-            "4️⃣ រង់ចាំចម្លើយតាមពេលវេorg កំណត់\n\n"
-            "💡 <b>គន្លឹះ:</b> បើមិនឆ org ២ សប្ដorg Follow up ម្ដorg បាន។"
+            "2️⃣ សម្ដែងការដឹងគុណចំពោះឱកាសដែលបានសម្ភាស\n"
+            "3️⃣ រំលឹកឡើងវិញពីចំណាប់អារម្មណ៍របស់អ្នក\n"
+            "4️⃣ រង់ចាំចម្លើយតាមពេលវេលាកំណត់\n\n"
+            "💡 <b>គន្លឹះ:</b> បើមិនមានការឆ្លើយតបក្នុងរយៈពេល ១-២ សប្ដាហ៍ អាច Follow up ដោយសុភាពបាន។"
         ),
     },
 ]
 
-FAQ_PER_PAGE = 4  # Number of questions per page
+FAQ_PER_PAGE = 4  # 4 questions per page (2x2 grid)
+
+
+def get_faq_text(page: int = 0) -> str:
+    total = len(FAQ_ITEMS)
+    total_pages = max(1, (total + FAQ_PER_PAGE - 1) // FAQ_PER_PAGE)
+    return (
+        f"❓ <b>សំណួរ និង ចម្លើយ (FAQ)</b>\n"
+        f"━━━━━━━━━━━━━━━━━━\n"
+        f"💬 តើអ្នកមានចម្ងល់ ឬសំណួរអ្វីខ្លះអំពី <b>Career</b> ឬ <b>CV</b>?\n"
+        f"សូមចុចលើប៊ូតុងសំណួរខាងក្រោម ដើម្បីមើលចម្លើយ៖\n\n"
+        f"📊 <b>ទំព័រ {page + 1} / {total_pages}</b>"
+    )
 
 
 def build_faq_keyboard(page: int = 0) -> InlineKeyboardMarkup:
-    """Build a paginated FAQ inline keyboard."""
+    """Build a paginated FAQ inline keyboard with a 2-column grid."""
     total = len(FAQ_ITEMS)
     total_pages = max(1, (total + FAQ_PER_PAGE - 1) // FAQ_PER_PAGE)
     page = max(0, min(page, total_pages - 1))
@@ -276,27 +206,46 @@ def build_faq_keyboard(page: int = 0) -> InlineKeyboardMarkup:
     page_items = FAQ_ITEMS[start_idx:end_idx]
 
     rows = []
-    # Question buttons in 2-column grid
+    # 2-column buttons for questions
     for i in range(0, len(page_items), 2):
         row = []
-        for item in page_items[i:i + 2]:
-            idx = FAQ_ITEMS.index(item)
+        for j, item in enumerate(page_items[i:i + 2]):
+            actual_idx = start_idx + i + j
             row.append(InlineKeyboardButton(
-                text=item["q"][:30] + ("..." if len(item["q"]) > 30 else ""),
-                callback_data=f"faq_a_{idx}",
+                text=item["title"],
+                callback_data=f"faq_a_{actual_idx}",
             ))
         rows.append(row)
 
-    # Pagination row
+    # Navigation row: [< មុន] [1 / 2] [> បន្ទាប់]
     nav_row = []
     if page > 0:
-        nav_row.append(InlineKeyboardButton("< មុន", callback_data=f"faq_p_{page - 1}"))
+        nav_row.append(InlineKeyboardButton("‹ មុន", callback_data=f"faq_p_{page - 1}"))
+    else:
+        nav_row.append(InlineKeyboardButton(" ", callback_data="faq_noop"))
+
     nav_row.append(InlineKeyboardButton(f"{page + 1} / {total_pages}", callback_data="faq_noop"))
+
     if page < total_pages - 1:
-        nav_row.append(InlineKeyboardButton("> បន្ទorg់", callback_data=f"faq_p_{page + 1}"))
+        nav_row.append(InlineKeyboardButton("› បន្ទាប់", callback_data=f"faq_p_{page + 1}"))
+    else:
+        nav_row.append(InlineKeyboardButton(" ", callback_data="faq_noop"))
     rows.append(nav_row)
 
+    # Refresh row
+    rows.append([
+        InlineKeyboardButton("🔄 ផ្ទុកឡើងវិញ", callback_data=f"faq_p_{page}")
+    ])
+
     return InlineKeyboardMarkup(rows)
+
+
+def build_faq_answer_keyboard(idx: int) -> InlineKeyboardMarkup:
+    """Build keyboard for single answer view with a Back button."""
+    page = idx // FAQ_PER_PAGE
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("🔙 ត្រឡប់ក្រោយ", callback_data=f"faq_p_{page}")]
+    ])
 
 
 def tg_emoji(emoji_id: str | None, fallback: str) -> str:
@@ -330,6 +279,7 @@ reply_keyboard = [
     ],
     [
         make_reply_btn("Career Tip", EMOJI_CAREER, "💼"),
+        make_reply_btn("FAQ", EMOJI_FAQ, "❓"),
     ],
     [
         make_reply_btn("CareerCenter Channel", EMOJI_CHANNEL, "📢"),
@@ -426,6 +376,12 @@ BUTTON_ACTIONS = {
         "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_FACEBOOK,
+    },
+    "FAQ": {
+        "is_faq": True,
+    },
+    "សំណួរ-ចម្លើយ (FAQ)": {
+        "is_faq": True,
     },
     "Support Us": {
         "text": (
@@ -559,7 +515,7 @@ def find_button_action(text: str) -> dict | None:
     if text in BUTTON_ACTIONS:
         return BUTTON_ACTIONS[text]
     # Strip any leading fallback emojis and spaces
-    clean = text.lstrip("✉️💁‍♀️💼📢🛡️❤️💝💸💡📄🔗🎵 ").strip()
+    clean = text.lstrip("✉️💁‍♀️💼📢🛡️❤️💝💸💡📄🔗🎵❓📌📈 ").strip()
     return BUTTON_ACTIONS.get(clean)
 
 
@@ -585,6 +541,22 @@ async def start(
     sent = await update.message.reply_text(
         welcome_text,
         reply_markup=menu,
+        parse_mode="HTML",
+    )
+    track_message(context, update.effective_chat.id, sent.message_id)
+
+
+async def faq_cmd(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
+    """Show the FAQ menu."""
+    if update.message:
+        track_message(context, update.effective_chat.id, update.message.message_id)
+    sent = await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=get_faq_text(0),
+        reply_markup=build_faq_keyboard(0),
         parse_mode="HTML",
     )
     track_message(context, update.effective_chat.id, sent.message_id)
@@ -625,6 +597,33 @@ async def handle_callback(
             )
             track_message(context, update.effective_chat.id, sent.message_id)
 
+    elif query.data.startswith("faq_p_"):
+        page = int(query.data.split("_")[2])
+        try:
+            await query.edit_message_text(
+                text=get_faq_text(page),
+                reply_markup=build_faq_keyboard(page),
+                parse_mode="HTML",
+            )
+        except BadRequest:
+            pass
+
+    elif query.data.startswith("faq_a_"):
+        idx = int(query.data.split("_")[2])
+        if 0 <= idx < len(FAQ_ITEMS):
+            item = FAQ_ITEMS[idx]
+            try:
+                await query.edit_message_text(
+                    text=item["a"],
+                    reply_markup=build_faq_answer_keyboard(idx),
+                    parse_mode="HTML",
+                )
+            except BadRequest:
+                pass
+
+    elif query.data == "faq_noop":
+        pass
+
 
 async def handle_message(
     update: Update,
@@ -659,8 +658,17 @@ async def handle_message(
         except Exception:
             pass
 
+        # បើសិនជាប៊ូតុង FAQ
+        if action.get("is_faq"):
+            sent = await context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text=get_faq_text(0),
+                reply_markup=build_faq_keyboard(0),
+                parse_mode="HTML",
+            )
+            track_message(context, update.effective_chat.id, sent.message_id)
         # ប្រសិនបើប៊ូតុងមាន sub-buttons (Inline keyboard)
-        if "inline_keyboard" in action:
+        elif "inline_keyboard" in action:
             sent = await context.bot.send_message(
                 chat_id=update.effective_chat.id,
                 text=action.get("text", ""),
@@ -716,13 +724,13 @@ async def post_init(application: Application) -> None:
     try:
         commands = [
             BotCommand("start", "Start the bot / ចាប់ផ្ដើម"),
+            BotCommand("faq", "Frequently Asked Questions / សំណួរ-ចម្លើយ"),
             BotCommand("clear", "Clear chatbot message history / សម្អាតសារ"),
         ]
         await application.bot.set_my_commands(commands)
         logger.info("Bot commands registered successfully.")
     except Exception as e:
         logger.warning("Could not set bot commands: %s", e)
-
 
 
 class HealthCheckHandler(BaseHTTPRequestHandler):
@@ -780,6 +788,7 @@ def main():
         .build()
     )
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("faq", faq_cmd))
     app.add_handler(CommandHandler("clear", clear_chat))
     app.add_handler(CommandHandler("clearchat", clear_chat))
     app.add_handler(CallbackQueryHandler(handle_callback))

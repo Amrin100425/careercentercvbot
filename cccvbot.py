@@ -70,7 +70,7 @@ EMOJI_BULB = os.getenv("EMOJI_BULB") or "5422439311196834318"
 EMOJI_LINK = os.getenv("EMOJI_LINK") or "5271604874419647061"
 EMOJI_WAVE = os.getenv("EMOJI_WAVE") or "5334863012475986105"
 EMOJI_DOWN = os.getenv("EMOJI_DOWN") or "5411322793373477644"
-EMOJI_FAQ = os.getenv("EMOJI_FAQ") or ""
+EMOJI_FAQ = os.getenv("EMOJI_FAQ") or "5436113877181941026"
 
 # ──────────────────────────────────────────────────────────────
 # FAQ: សំណួរ និង ចម្លើយ អំពី Career និង CV
@@ -187,7 +187,7 @@ def get_faq_text(page: int = 0) -> str:
     total = len(FAQ_ITEMS)
     total_pages = max(1, (total + FAQ_PER_PAGE - 1) // FAQ_PER_PAGE)
     return (
-        f"❓ <b>សំណួរ និង ចម្លើយ (FAQ)</b>\n"
+        f"{tg_emoji(EMOJI_FAQ, '❓')} <b>សំណួរ និង ចម្លើយ (FAQ)</b>\n"
         f"━━━━━━━━━━━━━━━━━━\n"
         f"💬 តើអ្នកមានចម្ងល់ ឬសំណួរអ្វីខ្លះអំពី <b>Career</b> ឬ <b>CV</b>?\n"
         f"សូមចុចលើប៊ូតុងសំណួរខាងក្រោម ដើម្បីមើលចម្លើយ៖\n\n"

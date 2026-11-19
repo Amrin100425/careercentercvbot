@@ -78,6 +78,24 @@ def tg_emoji(emoji_id: str | None, fallback: str) -> str:
         return f'<tg-emoji emoji-id="{str(emoji_id).strip()}">{fallback}</tg-emoji>'
     return fallback
 
+
+def make_reply_btn(text: str, emoji_id: str | None = None, fallback_icon: str = "") -> KeyboardButton:
+    """Create a KeyboardButton with custom emoji icon if provided."""
+    if emoji_id and str(emoji_id).strip():
+        return KeyboardButton(text=text, api_kwargs={"icon_custom_emoji_id": str(emoji_id).strip()})
+    label = f"{fallback_icon} {text}".strip() if fallback_icon else text
+    return KeyboardButton(label)
+
+
+def make_inline_btn(text: str, emoji_id: str | None = None, fallback_icon: str = "", **kwargs) -> InlineKeyboardButton:
+    """Create an InlineKeyboardButton with custom emoji icon if provided."""
+    if emoji_id and str(emoji_id).strip():
+        api_kw = kwargs.pop("api_kwargs", {}) or {}
+        api_kw["icon_custom_emoji_id"] = str(emoji_id).strip()
+        return InlineKeyboardButton(text=text, api_kwargs=api_kw, **kwargs)
+    label = f"{fallback_icon} {text}".strip() if fallback_icon else text
+    return InlineKeyboardButton(label, **kwargs)
+
 # ──────────────────────────────────────────────────────────────
 # FAQ Data: Categories, Questions & Extended Answers (KH & EN)
 # ──────────────────────────────────────────────────────────────
@@ -672,19 +690,19 @@ def build_faq_qa_keyboard(cat_idx: int, q_idx: int, current_lang: str) -> Inline
 # បង្កើត Reply Keyboard បង្ហាញនៅខាងក្រោមប្រអប់វាយអក្សរ (Under typing)
 reply_keyboard = [
     [
-        KeyboardButton("✉️ CV & Cover Letter"),
-        KeyboardButton("📌 គន្លឹះក្នុងការសម្ភាស"),
+        make_reply_btn("CV & Cover Letter", EMOJI_CV, "✉️"),
+        make_reply_btn("គន្លឹះក្នុងការសម្ភាស", EMOJI_INTERVIEW, "📌"),
     ],
     [
-        KeyboardButton("💼 Career Tip"),
-        KeyboardButton("❓ FAQ"),
+        make_reply_btn("Career Tip", EMOJI_CAREER, "💼"),
+        make_reply_btn("FAQ", EMOJI_FAQ, "❓"),
     ],
     [
-        KeyboardButton("📢 CareerCenter Channel"),
-        KeyboardButton("🛡️ CareerCenter Admin"),
+        make_reply_btn("CareerCenter Channel", EMOJI_CHANNEL, "📢"),
+        make_reply_btn("CareerCenter Admin", EMOJI_ADMIN, "🛡️"),
     ],
     [
-        KeyboardButton("📈 Support Us"),
+        make_reply_btn("Support Us", EMOJI_SUPPORT or EMOJI_DONATE, "📈"),
     ],
 ]
 
@@ -699,20 +717,26 @@ QR_IMAGE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "qr_don
 
 support_inline_keyboard = [
     [
-        InlineKeyboardButton(
-            "❤️ CareerCenter Facebook page",
+        make_inline_btn(
+            "CareerCenter Facebook page",
+            emoji_id=EMOJI_FACEBOOK,
+            fallback_icon="❤️",
             url=URL_FACEBOOK,
         )
     ],
     [
-        InlineKeyboardButton(
-            "🎵 CareerCenter Tiktok page",
+        make_inline_btn(
+            "CareerCenter Tiktok page",
+            emoji_id=EMOJI_TIKTOK,
+            fallback_icon="🎵",
             url=URL_TIKTOK,
         )
     ],
     [
-        InlineKeyboardButton(
-            "💸 Donate us",
+        make_inline_btn(
+            "Donate us",
+            emoji_id=EMOJI_DONATE,
+            fallback_icon="💸",
             callback_data="donate_us",
         )
     ],
@@ -723,46 +747,56 @@ BUTTON_ACTIONS = {
     "CV & Cover Letter": {
         "text": f"{tg_emoji(EMOJI_DOC, '📄')} <b>CV & Cover Letter</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីចូលទៅកាន់ Channel៖",
         "btn_label": "ចូលទៅកាន់ CV & Cover Letter",
+        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_CV_CHANNEL,
     },
     "គន្លឹះក្នុងការសម្ភាស": {
         "text": f"{tg_emoji(EMOJI_BULB, '💡')} <b>គន្លឹះក្នុងការសម្ភាសន៍</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលការណែនាំសម្ភាសន៍៖",
         "btn_label": "ចូលទៅកាន់ គន្លឹះក្នុងការសម្ភាស",
+        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_INTERVIEW_TIP,
     },
     "Interview Tip": {
         "text": f"{tg_emoji(EMOJI_BULB, '💡')} <b>Interview Tip</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលការណែនាំសម្ភាសន៍៖",
         "btn_label": "ចូលទៅកាន់ Interview Tip",
+        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_INTERVIEW_TIP,
     },
     "Career Tip": {
         "text": f"{tg_emoji(EMOJI_CAREER, '💼')} <b>Career Tip</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលគន្លឹះការងារ៖",
         "btn_label": "ចូលទៅកាន់ Career Tip",
+        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_CAREER_TIP,
     },
     "CareerCenter Channel": {
         "text": f"{tg_emoji(EMOJI_CHANNEL, '📢')} <b>Career Center Channel</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលChannel៖",
         "btn_label": "ចូលទៅកាន់ Career Center Channel",
+        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_CAREER_CHANNEL,
     },
     "CareerCenter Admin": {
         "text": f"{tg_emoji(EMOJI_ADMIN, '🛡️')} <b>CareerCenter Admin</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលAdmin៖",
         "btn_label": "ចូលទៅកាន់ CareerCenter Admin",
+        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_ADMIN,
     },
     "CC Facebook Page": {
         "text": f"{tg_emoji(EMOJI_FACEBOOK, '❤️')} <b>CC Facebook Page</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីចូលទៅកាន់ Facebook Page៖",
         "btn_label": "ចូលទៅកាន់ Facebook Page",
+        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_FACEBOOK,
     },
     "FAQ": {
+        "is_faq": True,
+    },
+    "❓ FAQ": {
         "is_faq": True,
     },
     "សំណួរ-ចម្លើយ (FAQ)": {
@@ -1089,9 +1123,12 @@ async def handle_message(
         else:
             inline_btn = None
             if "btn_label" in action and "url" in action:
+                btn_emoji = action.get("btn_emoji")
                 btn_fallback = action.get("btn_fallback", "🔗")
-                btn_obj = InlineKeyboardButton(
-                    f"{btn_fallback} {action['btn_label']}".strip(),
+                btn_obj = make_inline_btn(
+                    action["btn_label"],
+                    emoji_id=btn_emoji,
+                    fallback_icon=btn_fallback,
                     url=action["url"],
                 )
                 inline_btn = InlineKeyboardMarkup([[btn_obj]])

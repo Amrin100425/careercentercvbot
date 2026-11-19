@@ -72,221 +72,272 @@ EMOJI_WAVE = os.getenv("EMOJI_WAVE") or "5334863012475986105"
 EMOJI_DOWN = os.getenv("EMOJI_DOWN") or "5411322793373477644"
 EMOJI_FAQ = os.getenv("EMOJI_FAQ") or "5436113877181941026"
 
-# ──────────────────────────────────────────────────────────────
-# FAQ: សំណួរ និង ចម្លើយ អំពី Career និង CV
-# ──────────────────────────────────────────────────────────────
-FAQ_ITEMS = [
-    {
-        "title": "📄 ចំនួនទំព័រ CV",
-        "q": "តើ CV ល្អគួរមានប៉ុន្មានទំព័រ?",
-        "a": (
-            "📄 <b>តើ CV ល្អគួរមានប៉ុន្មានទំព័រ?</b>\n\n"
-            "• សម្រាប់និស្សិតថ្មី ឬអ្នកមានបទពិសោធន៍តិចជាង ៥ ឆ្នាំ: CV គួរមាន <b>១ ទំព័រ</b> ប៉ុណ្ណោះ។\n"
-            "• បើមានបទពិសោធន៍ច្រើនជាង ៥ ឆ្នាំ: អាចមាន <b>២ ទំព័រ</b> ក៏បាន។\n\n"
-            "💡 <b>គន្លឹះ:</b> ផ្ដោតលើព័ត៌មានសំខាន់ៗ និងពាក់ព័ន្ធនឹងមុខតំណែងដែលអ្នកដាក់ស្នើ។"
-        ),
-    },
-    {
-        "title": "📝 ព័ត៌មានក្នុង CV",
-        "q": "តើ CV ត្រូវមានអ្វីខ្លះ?",
-        "a": (
-            "📝 <b>តើ CV ត្រូវមានអ្វីខ្លះ?</b>\n\n"
-            "CV ល្អគួរមាន៖\n"
-            "1️⃣ <b>ព័ត៌មានផ្ទាល់ខ្លួន:</b> ឈ្មោះ ទូរស័ព្ទ Email ទីលំនៅ\n"
-            "2️⃣ <b>សង្ខេបអំពីខ្លួនឯង:</b> Professional Summary\n"
-            "3️⃣ <b>បទពិសោធន៍ការងារ:</b> រៀបរាប់ពីថ្មីទៅចាស់\n"
-            "4️⃣ <b>ការអប់រំ:</b> កម្រិតវប្បធម៌ ឬសញ្ញាបត្រ\n"
-            "5️⃣ <b>ជំនាញ (Skills):</b> ជំនាញរឹង និងជំនាញទន់\n"
-            "6️⃣ <b>សមិទ្ធិផល ឬ ភាសា:</b> ភាសាបរទេស វគ្គខ្លីៗ\n\n"
-            "💡 <b>គន្លឹះ:</b> កែសម្រួល CV ឱ្យសមស្របនឹងមុខតំណែងនីមួយៗ។"
-        ),
-    },
-    {
-        "title": "✉️ Cover Letter",
-        "q": "តើ Cover Letter សំខាន់ទេ?",
-        "a": (
-            "✉️ <b>តើ Cover Letter សំខាន់ទេ?</b>\n\n"
-            "<b>សំខាន់ណាស់!</b> Cover Letter ជួយឱ្យអ្នកជ្រើសរើសស្គាល់អ្នកកាន់តែច្បាស់ "
-            "អំពីចំណាប់អារម្មណ៍ និងហេតុផលដែលអ្នកចង់ធ្វើការងារនោះ។\n\n"
-            "• បង្ហាញពីចំណុចពិសេសដែល CV មិនអាចបង្ហាញ\n"
-            "• បង្ហាញពីការតាំងចិត្ត និងចំណេះដឹងអំពីក្រុមហ៊ុន\n\n"
-            "💡 <b>គន្លឹះ:</b> សរសេរ Cover Letter ខុសៗគ្នាសម្រាប់ក្រុមហ៊ុននីមួយៗ កុំប្រើមួយដដែលៗ។"
-        ),
-    },
-    {
-        "title": "🎯 ការត្រៀមសម្ភាស",
-        "q": "តើត្រូវរៀបចំខ្លួនយ៉ាងម៉េចមុនសម្ភាស?",
-        "a": (
-            "🎯 <b>តើត្រូវរៀបចំខ្លួនយ៉ាងម៉េចមុនសម្ភាស?</b>\n\n"
-            "1️⃣ <b>ស្រាវជ្រាវ:</b> ស្វែងយល់ពីក្រុមហ៊ុន និងមុខតំណែង\n"
-            "2️⃣ <b>ត្រៀមចម្លើយ:</b> សម្រាប់សំណួរទូទៅ និងសំណួរបច្ចេកទេស\n"
-            "3️⃣ <b>សម្លៀកបំពាក់:</b> ស្លៀកពាក់ឱ្យសមរម្យ មានរបៀបរៀបរយ\n"
-            "4️⃣ <b>ឯកសារ:</b> យក CV និងឯកសារពាក់ព័ន្ធមួយច្បាប់បន្ថែម\n"
-            "5️⃣ <b>ពេលវេលា:</b> ទៅដល់មុន ១០-១៥ នាទី\n\n"
-            "💡 <b>គន្លឹះ:</b> អនុវត្តសម្ភាសន៍សាកល្បងជាមួយមិត្តភ័ក្តិ ដើម្បីបង្កើនទំនុកចិត្ត។"
-        ),
-    },
-    {
-        "title": "🗣️ សំណួរសម្ភាស",
-        "q": "សំណួរសម្ភាសដែលគេសួរញឹកញាប់?",
-        "a": (
-            "🗣️ <b>សំណួរសម្ភាសដែលគេសួរញឹកញាប់</b>\n\n"
-            "1️⃣ ប្រាប់ខ្ញុំអំពីខ្លួនអ្នក?\n"
-            "2️⃣ ហេតុអ្វីបានជាអ្នកចង់ធ្វើការនៅទីនេះ?\n"
-            "3️⃣ តើចំណុចខ្លាំង និងចំណុចខ្សោយរបស់អ្នកគឺជាអ្វី?\n"
-            "4️⃣ ប្រាប់ខ្ញុំអំពីបញ្ហាដែលអ្នកធ្លាប់ដោះស្រាយ?\n"
-            "5️⃣ តើអ្នករំពឹងប្រាក់ខែប៉ុន្មាន?\n\n"
-            "💡 <b>គន្លឹះ:</b> រៀបចំចម្លើយដោយប្រើវិធី <b>STAR</b> (Situation, Task, Action, Result)។"
-        ),
-    },
-    {
-        "title": "🚫 កំហុសក្នុង CV",
-        "q": "តើអ្វីខ្លះដែលមិនគួរដាក់ក្នុង CV?",
-        "a": (
-            "🚫 <b>តើអ្វីខ្លះដែលមិនគួរដាក់ក្នុង CV?</b>\n\n"
-            "❌ រូបថតមិនសមរម្យ (រូប Selfie ឬរូបលេងសើច)\n"
-            "❌ ព័ត៌មានផ្ទាល់ខ្លួនដែលមិនចាំបាច់ (ស្ថានភាពគ្រួសារ សាសនា...)\n"
-            "❌ ប្រវត្តិការងារដែលមិនទាក់ទងនឹងការងារថ្មី\n"
-            "❌ ប្រាក់ខែចាស់ ឬប្រាក់ខែរំពឹងទុក\n"
-            "❌ មូលហេតុចាកចេញពីការងារចាស់\n"
-            "❌ ព័ត៌មានមិនពិត\n\n"
-            "💡 <b>គន្លឹះ:</b> ដាក់តែព័ត៌មានដែលបន្ថែមតម្លៃដល់អ្នក។"
-        ),
-    },
-    {
-        "title": "📧 របៀបផ្ញើ CV",
-        "q": "តើគួរផ្ញើ CV តាមរបៀបណា?",
-        "a": (
-            "📧 <b>តើគួរផ្ញើ CV តាមរបៀបណា?</b>\n\n"
-            "✅ ផ្ញើតាម <b>Email</b> ជាឯកសារ <b>PDF</b> ជានិច្ច\n"
-            "✅ ដាក់ Subject Email ឱ្យច្បាស់:\n"
-            "   <i>ឧ. ពាក្យស្នើសុំការងារ - [ឈ្មោះ] - [មុខតំណែង]</i>\n"
-            "✅ សរសេរ Cover Message ខ្លីៗ និងគួរសមក្នុង Email Body\n"
-            "✅ ពិនិត្យឯកសារភ្ជាប់មុនពេលចុច Send\n\n"
-            "💡 <b>គន្លឹះ:</b> កុំផ្ញើជា Word Document ព្រោះទម្រង់អាចខូចនៅលើឧបករណ៍ផ្សេង។"
-        ),
-    },
-    {
-        "title": "📩 ក្រោយសម្ភាសន៍",
-        "q": "តើគួរធ្វើអ្វីបន្ទាប់ពីសម្ភាស?",
-        "a": (
-            "📩 <b>តើគួរធ្វើអ្វីបន្ទាប់ពីសម្ភាស?</b>\n\n"
-            "1️⃣ ផ្ញើ <b>Thank You Email</b> ក្នុងរយៈពេល ២៤ ម៉ោង\n"
-            "2️⃣ សម្ដែងការដឹងគុណចំពោះឱកាសដែលបានសម្ភាស\n"
-            "3️⃣ រំលឹកឡើងវិញពីចំណាប់អារម្មណ៍របស់អ្នក\n"
-            "4️⃣ រង់ចាំចម្លើយតាមពេលវេលាកំណត់\n\n"
-            "💡 <b>គន្លឹះ:</b> បើមិនមានការឆ្លើយតបក្នុងរយៈពេល ១-២ សប្ដាហ៍ អាច Follow up ដោយសុភាពបាន។"
-        ),
-    },
-]
-
-FAQ_PER_PAGE = 4  # 4 questions per page (2x2 grid)
-
-
-def get_faq_text(page: int = 0) -> str:
-    total = len(FAQ_ITEMS)
-    total_pages = max(1, (total + FAQ_PER_PAGE - 1) // FAQ_PER_PAGE)
-    return (
-        f"{tg_emoji(EMOJI_FAQ, '❓')} <b>សំណួរ និង ចម្លើយ (FAQ)</b>\n"
-        f"━━━━━━━━━━━━━━━━━━\n"
-        f"💬 តើអ្នកមានចម្ងល់ ឬសំណួរអ្វីខ្លះអំពី <b>Career</b> ឬ <b>CV</b>?\n"
-        f"សូមចុចលើប៊ូតុងសំណួរខាងក្រោម ដើម្បីមើលចម្លើយ៖\n\n"
-        f"📊 <b>ទំព័រ {page + 1} / {total_pages}</b>"
-    )
-
-
-def build_faq_keyboard(page: int = 0) -> InlineKeyboardMarkup:
-    """Build a paginated FAQ inline keyboard with a 2-column grid."""
-    total = len(FAQ_ITEMS)
-    total_pages = max(1, (total + FAQ_PER_PAGE - 1) // FAQ_PER_PAGE)
-    page = max(0, min(page, total_pages - 1))
-
-    start_idx = page * FAQ_PER_PAGE
-    end_idx = min(start_idx + FAQ_PER_PAGE, total)
-    page_items = FAQ_ITEMS[start_idx:end_idx]
-
-    rows = []
-    # 2-column buttons for questions
-    for i in range(0, len(page_items), 2):
-        row = []
-        for j, item in enumerate(page_items[i:i + 2]):
-            actual_idx = start_idx + i + j
-            row.append(InlineKeyboardButton(
-                text=item["title"],
-                callback_data=f"faq_a_{actual_idx}",
-            ))
-        rows.append(row)
-
-    # Navigation row: [< មុន] [1 / 2] [> បន្ទាប់]
-    nav_row = []
-    if page > 0:
-        nav_row.append(InlineKeyboardButton("‹ មុន", callback_data=f"faq_p_{page - 1}"))
-    else:
-        nav_row.append(InlineKeyboardButton(" ", callback_data="faq_noop"))
-
-    nav_row.append(InlineKeyboardButton(f"{page + 1} / {total_pages}", callback_data="faq_noop"))
-
-    if page < total_pages - 1:
-        nav_row.append(InlineKeyboardButton("› បន្ទាប់", callback_data=f"faq_p_{page + 1}"))
-    else:
-        nav_row.append(InlineKeyboardButton(" ", callback_data="faq_noop"))
-    rows.append(nav_row)
-
-    # Refresh row
-    rows.append([
-        InlineKeyboardButton("🔄 ផ្ទុកឡើងវិញ", callback_data=f"faq_p_{page}")
-    ])
-
-    return InlineKeyboardMarkup(rows)
-
-
-def build_faq_answer_keyboard(idx: int) -> InlineKeyboardMarkup:
-    """Build keyboard for single answer view with a Back button."""
-    page = idx // FAQ_PER_PAGE
-    return InlineKeyboardMarkup([
-        [InlineKeyboardButton("🔙 ត្រឡប់ក្រោយ", callback_data=f"faq_p_{page}")]
-    ])
-
-
 def tg_emoji(emoji_id: str | None, fallback: str) -> str:
     """Format an animated custom emoji for HTML parse mode, or return fallback."""
     if emoji_id and str(emoji_id).strip():
         return f'<tg-emoji emoji-id="{str(emoji_id).strip()}">{fallback}</tg-emoji>'
     return fallback
 
-
 def make_reply_btn(text: str, emoji_id: str | None = None, fallback_icon: str = "") -> KeyboardButton:
-    """Create a KeyboardButton with custom emoji icon if provided."""
-    if emoji_id and str(emoji_id).strip():
-        return KeyboardButton(text=text, icon_custom_emoji_id=str(emoji_id).strip())
+    """Create a KeyboardButton with icon."""
     label = f"{fallback_icon} {text}".strip() if fallback_icon else text
     return KeyboardButton(label)
 
-
 def make_inline_btn(text: str, emoji_id: str | None = None, fallback_icon: str = "", **kwargs) -> InlineKeyboardButton:
-    """Create an InlineKeyboardButton with custom emoji icon if provided."""
-    if emoji_id and str(emoji_id).strip():
-        return InlineKeyboardButton(text=text, icon_custom_emoji_id=str(emoji_id).strip(), **kwargs)
+    """Create an InlineKeyboardButton with icon."""
     label = f"{fallback_icon} {text}".strip() if fallback_icon else text
     return InlineKeyboardButton(label, **kwargs)
 
+# ──────────────────────────────────────────────────────────────
+# FAQ Data Structure: Categories, Questions & Answers (KH/EN)
+# ──────────────────────────────────────────────────────────────
+FAQ_CATEGORIES = [
+    {
+        "id": "arch_civil",
+        "title_btn": "🏗️ ស្ថាបត្យកម្ម & សំណង់",
+        "title_kh": "ជំនាញស្ថាបត្យកម្ម និងវិស្វកម្មសំណង់",
+        "title_en": "Architecture & Civil Engineering",
+        "header_kh": "១១. ជំនាញស្ថាបត្យកម្ម និងវិស្វកម្មសំណង់ (Architecture & Civil Engineering)",
+        "positions": [
+            "ស្ថាបត្យករ (Architect)",
+            "វិស្វករសំណង់ស៊ីវិល (Civil Engineer)",
+            "អ្នកគ្រប់គ្រងការដ្ឋាន (Site Manager)",
+            "អ្នកត្រួតពិនិត្យគុណភាព (Quality Control Engineer)",
+        ],
+        "questions": [
+            {
+                "num": 1,
+                "label": "គុណភាព & សុវត្ថិភាពការដ្ឋាន",
+                "q_kh": "តើអ្នកធានាគុណភាព និងសុវត្ថិភាពនៅការដ្ឋានសំណង់ដូចម្តេច?",
+                "q_en": "How do you ensure quality and safety on a construction site?",
+                "a_kh": "ខ្ញុំអនុវត្តតាមប្លង់ និងលក្ខណៈបច្ចេកទេសដែលបានអនុម័ត ត្រួតពិនិត្យការងារជាប្រចាំ អនុវត្តនីតិវិធីសុវត្ថិភាពសមស្រប និងរាយការណ៍កំហុសឆ្គង ឬហានិភ័យភ្លាមៗ។",
+                "a_en": "I follow approved drawings and specifications, inspect work regularly, use appropriate safety procedures, and report any defects or hazards immediately.",
+            },
+            {
+                "num": 2,
+                "label": "គម្រោងយឺតជាងកាលវិភាគ",
+                "q_kh": "តើអ្នកធ្វើដូចម្តេច ប្រសិនបើគម្រោងយឺតជាងកាលវិភាគ?",
+                "q_en": "What would you do if a project fell behind schedule?",
+                "a_kh": "ខ្ញុំនឹងស្វែងរកមូលហេតុនៃការយឺតយ៉ាវ ពិនិត្យកាលវិភាគគម្រោង សម្របសម្រួលជាមួយក្រុមការងារ និងស្នើវិធានការកែតម្រូវ ដោយរក្សាស្តង់ដារគុណភាព និងសុវត្ថិភាព។",
+                "a_en": "I would identify the cause of the delay, review the project schedule, coordinate with the team, and propose corrective actions while maintaining quality and safety standards.",
+            },
+        ],
+    },
+    {
+        "id": "languages",
+        "title_btn": "🗣️ ភាសាអង់គ្លេស & ចិន",
+        "title_kh": "ជំនាញភាសាអង់គ្លេស និងភាសាចិន",
+        "title_en": "English & Chinese Teaching",
+        "header_kh": "១២. ជំនាញភាសាអង់គ្លេស និងភាសាចិន (English & Chinese Teaching)",
+        "positions": [
+            "គ្រូបង្រៀនភាសាអង់គ្លេស (English Teacher)",
+            "គ្រូបង្រៀនភាសាចិន (Chinese Teacher)",
+            "អ្នកបកប្រែ (Translator)",
+            "អ្នកបកប្រែផ្ទាល់មាត់ (Interpreter)",
+        ],
+        "questions": [
+            {
+                "num": 1,
+                "label": "បង្រៀនសិស្សកម្រិតខុសគ្នា",
+                "q_kh": "តើអ្នកបង្រៀនសិស្សដែលមានកម្រិតភាសាខុសៗគ្នាដូចម្តេច?",
+                "q_en": "How would you teach students with different language levels?",
+                "a_kh": "ខ្ញុំវាយតម្លៃកម្រិតសិស្ស កែសម្រួលសកម្មភាពតាមតម្រូវការ ប្រើឧទាហរណ៍ច្បាស់លាស់ និងផ្តល់មតិកែលម្អ ព្រមទាំងលំហាត់បន្ថែម។",
+                "a_en": "I assess students' levels, adapt activities to their needs, use clear examples, and provide feedback and additional practice.",
+            },
+            {
+                "num": 2,
+                "label": "ភាពត្រឹមត្រូវនៃការបកប្រែ",
+                "q_kh": "តើអ្នកធានាភាពត្រឹមត្រូវនៃការបកប្រែដូចម្តេច?",
+                "q_en": "How do you ensure an accurate translation?",
+                "a_kh": "ខ្ញុំស្វែងយល់ពីបរិបទជាមុន ប្រើពាក្យបច្ចេកទេសឱ្យត្រឹមត្រូវ រក្សាអត្ថន័យដើម និងពិនិត្យការបកប្រែឡើងវិញដើម្បីធានាភាពត្រឹមត្រូវ និងច្បាស់លាស់។",
+                "a_en": "I understand the context first, use appropriate terminology, preserve the original meaning, and review the translation for accuracy and clarity.",
+            },
+        ],
+    },
+    {
+        "id": "literature_history",
+        "title_btn": "📚 អក្សរសាស្ត្រ & ប្រវត្តិ",
+        "title_kh": "ជំនាញអក្សរសាស្ត្រខ្មែរ និងប្រវត្តិសាស្ត្រ",
+        "title_en": "Khmer Literature & History",
+        "header_kh": "១៣. ជំនាញអក្សរសាស្ត្រខ្មែរ និងប្រវត្តិសាស្ត្រ (Khmer Literature & History)",
+        "positions": [
+            "គ្រូបង្រៀនអក្សរសាស្ត្រខ្មែរ (Khmer Literature Teacher)",
+            "អ្នកស្រាវជ្រាវ (Researcher)",
+            "អ្នកនិពន្ធ (Writer)",
+            "មន្ត្រីវប្បធម៌ (Cultural Affairs Officer)",
+        ],
+        "questions": [
+            {
+                "num": 1,
+                "label": "ភាពត្រឹមត្រូវនៃព័ត៌មានប្រវត្តិ",
+                "q_kh": "តើអ្នកធានាភាពត្រឹមត្រូវនៃព័ត៌មានប្រវត្តិសាស្ត្រដូចម្តេច?",
+                "q_en": "How do you ensure the accuracy of historical information?",
+                "a_kh": "ខ្ញុំពិគ្រោះប្រភពប្រវត្តិសាស្ត្រដែលគួរឱ្យទុកចិត្ត ប្រៀបធៀបកំណត់ត្រាផ្សេងៗ ផ្ទៀងផ្ទាត់កាលបរិច្ឆេទ និងភស្តុតាង ហើយបែងចែកអង្គហេតុដែលបានផ្ទៀងផ្ទាត់ពីការបកស្រាយ។",
+                "a_en": "I consult reliable historical sources, compare different accounts, check dates and evidence, and distinguish verified facts from interpretations.",
+            },
+            {
+                "num": 2,
+                "label": "បង្រៀនអក្សរសាស្ត្រឱ្យទាក់ទាញ",
+                "q_kh": "តើអ្នកធ្វើឱ្យមេរៀនអក្សរសាស្ត្រទាក់ទាញសិស្សដូចម្តេច?",
+                "q_en": "How would you make a literature lesson engaging?",
+                "a_kh": "ខ្ញុំប្រើឧទាហរណ៍ដែលទាក់ទងនឹងជីវិត ការនិទានរឿង ការពិភាក្សាជាក្រុម និងសកម្មភាពច្នៃប្រឌិត ដើម្បីជួយសិស្សយល់ពីអត្ថបទ និងភ្ជាប់ទៅនឹងជីវិតជាក់ស្តែង។",
+                "a_en": "I use relatable examples, storytelling, group discussions, and creative activities to help students understand the text and connect it to real life.",
+            },
+        ],
+    },
+    {
+        "id": "hr",
+        "title_btn": "👥 ធនធានមនុស្ស (HR)",
+        "title_kh": "ជំនាញធនធានមនុស្ស",
+        "title_en": "Human Resources",
+        "header_kh": "១៤. ជំនាញធនធានមនុស្ស (Human Resources)",
+        "positions": [
+            "មន្ត្រីធនធានមនុស្ស (HR Officer)",
+            "មន្ត្រីជ្រើសរើសបុគ្គលិក (Recruitment Officer)",
+            "មន្ត្រីបណ្តុះបណ្តាល (Training Officer)",
+        ],
+        "questions": [
+            {
+                "num": 1,
+                "label": "ការពិនិត្យជ្រើសរើសបេក្ខជន",
+                "q_kh": "តើអ្នកពិនិត្យជ្រើសរើសបេក្ខជនដាក់ពាក្យការងារដូចម្តេច?",
+                "q_en": "How do you screen job applicants?",
+                "a_kh": "ខ្ញុំប្រៀបធៀបលក្ខណៈសម្បត្តិ ជំនាញ និងបទពិសោធន៍របស់បេក្ខជនជាមួយតម្រូវការការងារ។ ខ្ញុំប្រើលក្ខណៈវិនិច្ឆ័យស្របគ្នា និងរក្សាការសម្ងាត់នៃព័ត៌មានបេក្ខជន។",
+                "a_en": "I compare applicants' qualifications, skills, and experience with the job requirements. I use consistent selection criteria and keep applicant information confidential.",
+            },
+            {
+                "num": 2,
+                "label": "ដោះស្រាយបណ្តឹងបុគ្គលិក",
+                "q_kh": "តើអ្នកធ្វើដូចម្តេច ប្រសិនបើបុគ្គលិកត្អូញត្អែរថាត្រូវបានប្រព្រឹត្តដោយមិនយុត្តិធម៌?",
+                "q_en": "What would you do if an employee complained about unfair treatment?",
+                "a_kh": "ខ្ញុំនឹងស្តាប់ដោយអព្យាក្រឹត កត់ត្រាកង្វល់ ពិនិត្យគោលការណ៍ និងភស្តុតាងពាក់ព័ន្ធ ហើយអនុវត្តតាមនីតិវិធីដោះស្រាយបណ្តឹងរបស់ស្ថាប័ន។",
+                "a_en": "I would listen objectively, document the concern, review relevant policies and evidence, and follow the organization's complaint-handling procedures.",
+            },
+        ],
+    },
+]
+
+def get_faq_home_text() -> str:
+    """Main FAQ menu message."""
+    return (
+        f"{tg_emoji(EMOJI_FAQ, '❓')} <b>សំណួរ-ចម្លើយសម្ភាសន៍ការងារ (FAQ)</b>\n"
+        f"━━━━━━━━━━━━━━━━━━\n"
+        f"💬 <b>Do you have any questions about career or CV?</b>\n"
+        f"តើអ្នកមានចម្ងល់ ឬសំណួរអ្វីខ្លះអំពីការងារ ឬ CV?\n\n"
+        f"📦 <b>សូមជ្រើសរើសជំនាញ / Select a Category:</b>"
+    )
+
+def build_faq_home_keyboard() -> InlineKeyboardMarkup:
+    """Build keyboard for category list (2-column layout)."""
+    rows = []
+    for i in range(0, len(FAQ_CATEGORIES), 2):
+        row = []
+        for c_idx in range(i, min(i + 2, len(FAQ_CATEGORIES))):
+            row.append(InlineKeyboardButton(
+                text=FAQ_CATEGORIES[c_idx]["title_btn"],
+                callback_data=f"faq_c_{c_idx}"
+            ))
+        rows.append(row)
+    rows.append([
+        InlineKeyboardButton("🔄 ផ្ទុកឡើងវិញ", callback_data="faq_home")
+    ])
+    return InlineKeyboardMarkup(rows)
+
+def get_faq_category_text(cat_idx: int) -> str:
+    """Text for a selected category, listing positions and asking for question."""
+    cat = FAQ_CATEGORIES[cat_idx]
+    pos_lines = "\n".join([f"  • {p}" for p in cat["positions"]])
+    return (
+        f"👍 <b>{cat['header_kh']}</b>\n"
+        f"━━━━━━━━━━━━━━━━━━\n"
+        f"👔 <b>មុខតំណែង (Positions)៖</b>\n"
+        f"{pos_lines}\n\n"
+        f"💬 <b>សូមជ្រើសរើសសំណួរ / Select a Question:</b>"
+    )
+
+def build_faq_category_keyboard(cat_idx: int) -> InlineKeyboardMarkup:
+    """Build question selection keyboard for a category."""
+    cat = FAQ_CATEGORIES[cat_idx]
+    rows = []
+    for q_idx, q in enumerate(cat["questions"]):
+        rows.append([
+            InlineKeyboardButton(
+                text=f"💬 សំណួរ {q['num']} ៖ {q['label']}",
+                callback_data=f"faq_q_{cat_idx}_{q_idx}_kh"
+            )
+        ])
+    rows.append([
+        InlineKeyboardButton("🔙 ត្រឡប់ក្រោយ / Back", callback_data="faq_home")
+    ])
+    return InlineKeyboardMarkup(rows)
+
+def get_faq_qa_text(cat_idx: int, q_idx: int, lang: str = "kh") -> str:
+    """Format single question & answer in KH, EN, or BOTH."""
+    cat = FAQ_CATEGORIES[cat_idx]
+    qa = cat["questions"][q_idx]
+
+    if lang == "kh":
+        return (
+            f"<b>{cat['header_kh']}</b>\n"
+            f"━━━━━━━━━━━━━━━━━━\n"
+            f"💬 <b>សំណួរ {qa['num']}៖</b>\n"
+            f"<b>{qa['q_kh']}</b>\n\n"
+            f"ℹ️ <b>ឧទាហរណ៍ ចម្លើយជាភាសាខ្មែរ៖</b>\n"
+            f"{qa['a_kh']}"
+        )
+    elif lang == "en":
+        return (
+            f"<b>{cat['header_kh']}</b>\n"
+            f"━━━━━━━━━━━━━━━━━━\n"
+            f"💬 <b>Question {qa['num']}:</b>\n"
+            f"<b>{qa['q_en']}</b>\n\n"
+            f"ℹ️ <b>Example Answer in English:</b>\n"
+            f"{qa['a_en']}"
+        )
+    else:  # both
+        return (
+            f"<b>{cat['header_kh']}</b>\n"
+            f"━━━━━━━━━━━━━━━━━━\n"
+            f"💬 <b>សំណួរ {qa['num']} / Question {qa['num']}:</b>\n"
+            f"✔️ {qa['q_kh']}\n"
+            f"<i>{qa['q_en']}</i>\n\n"
+            f"ℹ️ <b>ឧទាហរណ៍ ចម្លើយជាភាសាខ្មែរ៖</b>\n"
+            f"{qa['a_kh']}\n\n"
+            f"ℹ️ <b>Example Answer in English:</b>\n"
+            f"{qa['a_en']}"
+        )
+
+def build_faq_qa_keyboard(cat_idx: int, q_idx: int, current_lang: str) -> InlineKeyboardMarkup:
+    """Build language switch buttons and back button for Q&A."""
+    lang_row = []
+    if current_lang != "kh":
+        lang_row.append(InlineKeyboardButton("🇰🇭 ភាសាខ្មែរ", callback_data=f"faq_q_{cat_idx}_{q_idx}_kh"))
+    if current_lang != "en":
+        lang_row.append(InlineKeyboardButton("🇬🇧 English", callback_data=f"faq_q_{cat_idx}_{q_idx}_en"))
+    if current_lang != "both":
+        lang_row.append(InlineKeyboardButton("🌐 ទាំងពីរ (Both)", callback_data=f"faq_q_{cat_idx}_{q_idx}_both"))
+
+    return InlineKeyboardMarkup([
+        lang_row,
+        [InlineKeyboardButton("🔙 បញ្ជីសំណួរ / Questions", callback_data=f"faq_c_{cat_idx}")]
+    ])
 
 # បង្កើត Reply Keyboard បង្ហាញនៅខាងក្រោមប្រអប់វាយអក្សរ (Under typing)
 reply_keyboard = [
     [
-        make_reply_btn("CV & Cover Letter", EMOJI_CV, "✉️"),
-        make_reply_btn("គន្លឹះក្នុងការសម្ភាស", EMOJI_INTERVIEW, "💁‍♀️"),
+        make_reply_btn("CV & Cover Letter", fallback_icon="✉️"),
+        make_reply_btn("គន្លឹះក្នុងការសម្ភាស", fallback_icon="📌"),
     ],
     [
-        make_reply_btn("Career Tip", EMOJI_CAREER, "💼"),
-        make_reply_btn("FAQ", EMOJI_FAQ, "❓"),
+        make_reply_btn("Career Tip", fallback_icon="💼"),
+        make_reply_btn("FAQ", fallback_icon="❓"),
     ],
     [
-        make_reply_btn("CareerCenter Channel", EMOJI_CHANNEL, "📢"),
-        make_reply_btn("CareerCenter Admin", EMOJI_ADMIN, "🛡️"),
+        make_reply_btn("CareerCenter Channel", fallback_icon="📢"),
+        make_reply_btn("CareerCenter Admin", fallback_icon="🛡️"),
     ],
     [
-        make_reply_btn("Support Us", EMOJI_SUPPORT or EMOJI_DONATE, "💝"),
+        make_reply_btn("Support Us", fallback_icon="📈"),
     ],
 ]
 
@@ -303,7 +354,6 @@ support_inline_keyboard = [
     [
         make_inline_btn(
             "CareerCenter Facebook page",
-            emoji_id=EMOJI_FACEBOOK,
             fallback_icon="❤️",
             url=URL_FACEBOOK,
         )
@@ -311,7 +361,6 @@ support_inline_keyboard = [
     [
         make_inline_btn(
             "CareerCenter Tiktok page",
-            emoji_id=EMOJI_TIKTOK,
             fallback_icon="🎵",
             url=URL_TIKTOK,
         )
@@ -319,7 +368,6 @@ support_inline_keyboard = [
     [
         make_inline_btn(
             "Donate us",
-            emoji_id=EMOJI_DONATE,
             fallback_icon="💸",
             callback_data="donate_us",
         )
@@ -331,49 +379,42 @@ BUTTON_ACTIONS = {
     "CV & Cover Letter": {
         "text": f"{tg_emoji(EMOJI_DOC, '📄')} <b>CV & Cover Letter</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីចូលទៅកាន់ Channel៖",
         "btn_label": "ចូលទៅកាន់ CV & Cover Letter",
-        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_CV_CHANNEL,
     },
     "គន្លឹះក្នុងការសម្ភាស": {
         "text": f"{tg_emoji(EMOJI_BULB, '💡')} <b>គន្លឹះក្នុងការសម្ភាសន៍</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលការណែនាំសម្ភាសន៍៖",
         "btn_label": "ចូលទៅកាន់ គន្លឹះក្នុងការសម្ភាស",
-        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_INTERVIEW_TIP,
     },
     "Interview Tip": {
         "text": f"{tg_emoji(EMOJI_BULB, '💡')} <b>Interview Tip</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលការណែនាំសម្ភាសន៍៖",
         "btn_label": "ចូលទៅកាន់ Interview Tip",
-        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_INTERVIEW_TIP,
     },
     "Career Tip": {
         "text": f"{tg_emoji(EMOJI_CAREER, '💼')} <b>Career Tip</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលគន្លឹះការងារ៖",
         "btn_label": "ចូលទៅកាន់ Career Tip",
-        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_CAREER_TIP,
     },
     "CareerCenter Channel": {
         "text": f"{tg_emoji(EMOJI_CHANNEL, '📢')} <b>Career Center Channel</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលChannel៖",
         "btn_label": "ចូលទៅកាន់ Career Center Channel",
-        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_CAREER_CHANNEL,
     },
     "CareerCenter Admin": {
         "text": f"{tg_emoji(EMOJI_ADMIN, '🛡️')} <b>CareerCenter Admin</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីមើលAdmin៖",
         "btn_label": "ចូលទៅកាន់ CareerCenter Admin",
-        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_ADMIN,
     },
     "CC Facebook Page": {
         "text": f"{tg_emoji(EMOJI_FACEBOOK, '❤️')} <b>CC Facebook Page</b>\n\nសូមចុចប៊ូតុងខាងក្រោមដើម្បីចូលទៅកាន់ Facebook Page៖",
         "btn_label": "ចូលទៅកាន់ Facebook Page",
-        "btn_emoji": EMOJI_LINK,
         "btn_fallback": "🔗",
         "url": URL_FACEBOOK,
     },
@@ -555,8 +596,8 @@ async def faq_cmd(
         track_message(context, update.effective_chat.id, update.message.message_id)
     sent = await context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text=get_faq_text(0),
-        reply_markup=build_faq_keyboard(0),
+        text=get_faq_home_text(),
+        reply_markup=build_faq_home_keyboard(),
         parse_mode="HTML",
     )
     track_message(context, update.effective_chat.id, sent.message_id)
@@ -597,29 +638,44 @@ async def handle_callback(
             )
             track_message(context, update.effective_chat.id, sent.message_id)
 
-    elif query.data.startswith("faq_p_"):
-        page = int(query.data.split("_")[2])
+    elif query.data == "faq_home":
         try:
             await query.edit_message_text(
-                text=get_faq_text(page),
-                reply_markup=build_faq_keyboard(page),
+                text=get_faq_home_text(),
+                reply_markup=build_faq_home_keyboard(),
                 parse_mode="HTML",
             )
         except BadRequest:
             pass
 
-    elif query.data.startswith("faq_a_"):
-        idx = int(query.data.split("_")[2])
-        if 0 <= idx < len(FAQ_ITEMS):
-            item = FAQ_ITEMS[idx]
+    elif query.data.startswith("faq_c_"):
+        cat_idx = int(query.data.split("_")[2])
+        if 0 <= cat_idx < len(FAQ_CATEGORIES):
             try:
                 await query.edit_message_text(
-                    text=item["a"],
-                    reply_markup=build_faq_answer_keyboard(idx),
+                    text=get_faq_category_text(cat_idx),
+                    reply_markup=build_faq_category_keyboard(cat_idx),
                     parse_mode="HTML",
                 )
             except BadRequest:
                 pass
+
+    elif query.data.startswith("faq_q_"):
+        parts = query.data.split("_")
+        cat_idx = int(parts[2])
+        q_idx = int(parts[3])
+        lang = parts[4] if len(parts) > 4 else "both"
+        if 0 <= cat_idx < len(FAQ_CATEGORIES):
+            cat = FAQ_CATEGORIES[cat_idx]
+            if 0 <= q_idx < len(cat["questions"]):
+                try:
+                    await query.edit_message_text(
+                        text=get_faq_qa_text(cat_idx, q_idx, lang),
+                        reply_markup=build_faq_qa_keyboard(cat_idx, q_idx, lang),
+                        parse_mode="HTML",
+                    )
+                except BadRequest:
+                    pass
 
     elif query.data == "faq_noop":
         pass
@@ -662,8 +718,8 @@ async def handle_message(
         if action.get("is_faq"):
             sent = await context.bot.send_message(
                 chat_id=update.effective_chat.id,
-                text=get_faq_text(0),
-                reply_markup=build_faq_keyboard(0),
+                text=get_faq_home_text(),
+                reply_markup=build_faq_home_keyboard(),
                 parse_mode="HTML",
             )
             track_message(context, update.effective_chat.id, sent.message_id)
@@ -689,11 +745,9 @@ async def handle_message(
         else:
             inline_btn = None
             if "btn_label" in action and "url" in action:
-                btn_emoji = action.get("btn_emoji")
                 btn_fallback = action.get("btn_fallback", "🔗")
                 btn_obj = make_inline_btn(
                     action["btn_label"],
-                    emoji_id=btn_emoji,
                     fallback_icon=btn_fallback,
                     url=action["url"],
                 )

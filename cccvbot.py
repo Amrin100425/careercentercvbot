@@ -581,6 +581,711 @@ FAQ_CATEGORIES = [
     },
 ]
 
+
+# ──────────────────────────────────────────────────────────────
+# Mock Interview Test: 15 Realistic Job Interview Questions
+# 3 Options per question with percentage scoring (the higher %, the better)
+# ──────────────────────────────────────────────────────────────
+MOCK_INTERVIEW_QUESTIONS = [
+    {
+        "id": 1,
+        "topic": "ការណែនាំខ្លួន / Self-Introduction",
+        "q_kh": "សូមណែនាំខ្លួនរបស់អ្នកដោយសង្ខេប (Tell me about yourself)។",
+        "q_en": "Tell me about yourself.",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "សង្ខេបពីប្រវត្តិរូបសង្ខេប បទពិសោធន៍គន្លឹះ និងសមិទ្ធផលដែលស្របតាមតួនាទីនេះ (រូបមន្ត Present-Past-Future) និងមូលហេតុដែលចង់ចូលរួមជាមួយក្រុមហ៊ុន។",
+                "text_en": "Summarize using the Present-Past-Future formula: current role, key achievements, relevant past experience, and why excited about this position.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! ចម្លើយមានរចនាសម្ព័ន្ធច្បាស់លាស់ ផ្តោតលើសមិទ្ធផលការងារ និងតម្លៃដែលអ្នកអាចនាំមកជូនក្រុមហ៊ុន ដោយមិនរៀបរាប់ព័ត៌មានផ្ទាល់ខ្លួនដែលមិនពាក់ព័ន្ធ។",
+                "feedback_en": "🌟 Perfect (95%)! Structured, concise, highlights relevant achievements, and directly addresses the company's needs.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "រៀបរាប់ឡើងវិញនូវអ្វីគ្រប់យ៉ាងដែលមានក្នុង CV តាមលំដាប់លំដោយពេលវេលាតាំងពីរៀនចប់ ដោយមិនបានសង្ខេបចំណុចសំខាន់។",
+                "text_en": "Recite everything chronologically from your CV without emphasizing key relevant achievements.",
+                "percent": 60,
+                "feedback_kh": "⚠️ មធ្យម (60%)! អ្នកសម្ភាសន៍បានអាន CV រួចហើយ ពួកគេចង់ស្តាប់ការសង្ខេបចំណុចលេចធ្លោ មិនមែនការអាន CV ឡើងវិញឡើយ។",
+                "feedback_en": "⚠️ Average (60%)! Interviewers already have your CV; they want a focused summary of your value proposition, not a chronological recitation.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "រៀបរាប់អំពីជីវិតផ្ទាល់ខ្លួន ស្ថានភាពគ្រួសារ ចំណង់ចំណូលចិត្តទូទៅ និងរឿងរ៉ាវផ្ទាល់ខ្លួនដែលមិនទាក់ទងនឹងការងារ។",
+                "text_en": "Talk extensively about personal life, family background, and unrelated hobbies.",
+                "percent": 25,
+                "feedback_kh": "❌ ខ្សោយ (25%)! ការសម្ភាសន៍ជាបរិបទវិជ្ជាជីវៈ។ ការនិយាយរឿងផ្ទាល់ខ្លួនច្រើនពេកបង្ហាញពីកង្វះវិជ្ជាជីវៈ និងមិនឆ្លើយតបនឹងការងារ។",
+                "feedback_en": "❌ Poor (25%)! Unprofessional and off-topic. Keep your response strictly professional and focused on the job requirements.",
+            },
+        ],
+    },
+    {
+        "id": 2,
+        "topic": "ចំណុចខ្លាំង / Greatest Strength",
+        "q_kh": "តើអ្វីជាចំណុចខ្លាំងបំផុតរបស់អ្នកក្នុងការបំពេញការងារ? (What is your greatest strength?)",
+        "q_en": "What is your greatest strength?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "ខ្ញុំជាមនុស្សពូកែគ្រប់យ៉ាង ធ្វើការងារអ្វីក៏បាន មិនដែលមានកំហុស និងរៀនអ្វីក៏ឆាប់ចេះទាំងអស់។",
+                "text_en": "I am good at everything, I can do any task, I never make mistakes, and I learn everything instantly.",
+                "percent": 30,
+                "feedback_kh": "❌ ខ្សោយ (30%)! ស្តាប់ទៅអួតអាង គ្មានភស្តុតាងជាក់ស្តែង និងមិនបង្ហាញពីភាពស្មោះត្រង់ ឬការស្គាល់ខ្លួនឯងឡើយ។",
+                "feedback_en": "❌ Poor (30%)! Sounds arrogant, lacks self-awareness, and provides no concrete proof or modesty.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "លើកឡើងចំណុចខ្លាំងស្នូល ១-២ ដែលស្របតាមតម្រូវការការងារ (ឧ. ការដោះស្រាយបញ្ហាស្មុគស្មាញ) អមដោយឧទាហរណ៍ជាក់ស្តែង (STAR) និងលទ្ធផលវាស់វែងបាន។",
+                "text_en": "Highlight 1-2 core strengths aligned with the role, supported by a concrete STAR example and measurable results.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! ការលើកឡើងចំណុចខ្លាំងដែលត្រូវនឹងតម្រូវការការងារ អមដោយឧទាហរណ៍ និងលទ្ធផលវាស់វែងបាន បង្កើតទំនុកចិត្តខ្ពស់បំផុត។",
+                "feedback_en": "🌟 Perfect (95%)! Directly relevant to the role, backed by tangible evidence and measurable business impact.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ខ្ញុំជាមនុស្សឧស្សាហ៍ព្យាយាម មកធ្វើការទៀងទាត់ និងស្តាប់បង្គាប់ថ្នាក់លើជានិច្ច។",
+                "text_en": "I am hardworking, always punctual, and always obey company instructions.",
+                "percent": 65,
+                "feedback_kh": "⚠️ មធ្យម (65%)! ទាំងនេះជាលក្ខខណ្ឌមូលដ្ឋានដែលបុគ្គលិកគ្រប់រូបត្រូវមាន (Baseline) មិនទាន់ជាចំណុចខ្លាំងលេចធ្លោដែលធ្វើឱ្យអ្នកខុសប្លែកពីគេទេ។",
+                "feedback_en": "⚠️ Average (65%)! Punctuality and hard work are baseline expectations, not standout competitive differentiators.",
+            },
+        ],
+    },
+    {
+        "id": 3,
+        "topic": "ចំណុចខ្សោយ / Greatest Weakness",
+        "q_kh": "តើអ្វីជាចំណុចខ្សោយរបស់អ្នក ហើយតើអ្នកកែលម្អវាដូចម្តេច? (What is your greatest weakness?)",
+        "q_en": "What is your greatest weakness, and how are you improving it?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "ចំណុចខ្សោយរបស់ខ្ញុំគឺខ្ញុំជាមនុស្ស Perfectionist ធ្វើការហ្មត់ចត់ពេក និងខិតខំធ្វើការខ្លាំងពេកមិនចេះសម្រាក។",
+                "text_en": "My weakness is that I am a perfectionist and work too hard without resting.",
+                "percent": 60,
+                "feedback_kh": "⚠️ មធ្យម (60%)! អ្នកសម្ភាសន៍ស្តាប់ចម្លើយក្លែងបន្លំ (Cliché) នេះញឹកញាប់ណាស់។ វាមិនបង្ហាញពីភាពស្មោះត្រង់ក្នុងការវាយតម្លៃខ្លួនឯងទេ។",
+                "feedback_en": "⚠️ Average (60%)! Cliché answer. Interviewers hear this disguised strength constantly; it lacks genuine authenticity.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ខ្ញុំគ្មានចំណុចខ្សោយអ្វីទេ ឬសារភាពចំណុចខ្សោយធ្ងន់ធ្ងរដូចជា ខ្ញុំពិបាកក្រោកពីគេងទាន់ពេល និងឆាប់ខឹងពេលមានសម្ពាធ។",
+                "text_en": "I don't have any weaknesses, or sharing fatal flaws like waking up late and having anger issues under pressure.",
+                "percent": 20,
+                "feedback_kh": "❌ ខ្សោយខ្លាំង (20%)! ឆ្លើយថាគ្មានចំណុចខ្សោយបង្ហាញពីការគ្មានការយល់ដឹងពីខ្លួនឯង រីឯការបង្ហាញកំហុសវិន័យធ្ងន់ធ្ងរធ្វើឱ្យធ្លាក់ភ្លាមៗ។",
+                "feedback_en": "❌ Very Poor (20%)! Denying weaknesses shows lack of self-awareness; sharing fatal character flaws disqualifies you.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "លើកឡើងចំណុចខ្សោយពិតប្រាកដដែលមិនប៉ះពាល់ដល់ស្នូលការងារ (ឧ. ភាពភ័យខ្លាចក្នុងការនិយាយជាសាធារណៈ) និងបង្ហាញសកម្មភាពជាក់ស្តែងដែលកំពុងធ្វើដើម្បីកែលម្អ។",
+                "text_en": "Share a genuine professional weakness (e.g., public speaking or task delegation) along with proactive steps you are currently taking to improve.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! បង្ហាញភាពស្មោះត្រង់ ការស្គាល់ខ្លួនឯង និងស្មារតីអភិវឌ្ឍន៍ខ្លួន (Growth Mindset) ជាមួយវិធានការដោះស្រាយច្បាស់លាស់។",
+                "feedback_en": "🌟 Perfect (95%)! Demonstrates self-awareness, authenticity, and a proactive growth mindset with actionable improvements.",
+            },
+        ],
+    },
+    {
+        "id": 4,
+        "topic": "ការស្រាវជ្រាវក្រុមហ៊ុន / Why This Company",
+        "q_kh": "ហេតុអ្វីបានជាអ្នកចាប់អារម្មណ៍ចង់ធ្វើការជាមួយក្រុមហ៊ុនរបស់យើង? (Why do you want to work here?)",
+        "q_en": "Why do you want to work for our company?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "បង្ហាញការយល់ដឹងស៊ីជម្រៅពីបេសកកម្ម វប្បធម៌ និងផលិតផលរបស់ក្រុមហ៊ុន ព្រមទាំងភ្ជាប់ពីរបៀបដែលជំនាញរបស់អ្នកអាចជួយឱ្យក្រុមហ៊ុនសម្រេចគោលដៅ។",
+                "text_en": "Demonstrate deep understanding of the company's mission, culture, and products, showing specifically how your skills contribute to their goals.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! បង្ហាញពីការត្រៀមខ្លួន និងការស្រាវជ្រាវហ្មត់ចត់ ព្រមទាំងមានបំណងចង់រួមចំណែកជោគជ័យជាមួយក្រុមហ៊ុនពិតប្រាកដ។",
+                "feedback_en": "🌟 Perfect (95%)! Shows genuine preparation, cultural alignment, and clear motivation to contribute to the company's vision.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ដោយសារក្រុមហ៊ុននេះល្បី ស្ថិតនៅជិតផ្ទះខ្ញុំ និងមានម៉ោងធ្វើការស្រួល។",
+                "text_en": "Because your company is well-known, located very close to my house, and has easy working hours.",
+                "percent": 55,
+                "feedback_kh": "⚠️ មធ្យម (55%)! ឆ្លើយតែពីផលប្រយោជន៍ផ្ទាល់ខ្លួន មិនបានបង្ហាញពីតម្លៃដែលអ្នកនឹងផ្តល់ឱ្យក្រុមហ៊ុន ឬការចាប់អារម្មណ៍លើការងារនោះទេ។",
+                "feedback_en": "⚠️ Average (55%)! Focuses solely on personal convenience rather than what value you bring or passion for the role.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ខ្ញុំកំពុងត្រូវការការងារបន្ទាន់ ខ្ញុំដាក់ពាក្យច្រើនកន្លែង ហើយក្រុមហ៊ុននេះហៅមកមុនគេ។",
+                "text_en": "I urgently need a job, I applied everywhere, and your company called me first.",
+                "percent": 25,
+                "feedback_kh": "❌ ខ្សោយ (25%)! ធ្វើឱ្យអ្នកមើលទៅគ្រាន់តែចង់បានការងារណាក៏បាន ដោយមិនខ្វល់ពីតួនាទី ឬក្រុមហ៊ុនឡើយ។",
+                "feedback_en": "❌ Poor (25%)! Appears desperate and indifferent to the specific organization.",
+            },
+        ],
+    },
+    {
+        "id": 5,
+        "topic": "ការបង្ហាញតម្លៃផ្ទាល់ខ្លួន / Why Hire You",
+        "q_kh": "ហេតុអ្វីបានជាយើងគួរជ្រើសរើសអ្នក ជាជាងបេក្ខជនដទៃទៀត? (Why should we hire you?)",
+        "q_en": "Why should we hire you over other candidates?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "ដោយសារខ្ញុំត្រូវការការងារនេះខ្លាំងណាស់ ហើយបេក្ខជនផ្សេងទៀតប្រហែលជាមិនខិតខំធ្វើការដូចខ្ញុំទេ។",
+                "text_en": "Because I need this job desperately, and other candidates probably won't work as hard as me.",
+                "percent": 30,
+                "feedback_kh": "❌ ខ្សោយ (30%)! កុំប្រៀបធៀបដោយបង្អាប់បេក្ខជនដទៃ និងកុំយកភាពទាល់ច្រកមកធ្វើជាលក្ខណៈសម្បត្តិការងារ។",
+                "feedback_en": "❌ Poor (30%)! Never disparage other candidates, and desperation is not a valid qualification.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ដោយសារខ្ញុំមានសញ្ញាបត្រត្រូវជំនាញ និងមានបទពិសោធន៍ការងារស្របតាមលក្ខខណ្ឌជ្រើសរើស។",
+                "text_en": "Because I have the required degree and meet the basic qualifications in the job posting.",
+                "percent": 65,
+                "feedback_kh": "⚠️ មធ្យម (65%)! បេក្ខជនជាច្រើនទៀតក៏មានសញ្ញាបត្រ និងបទពិសោធន៍ដូចគ្នា។ អ្នកត្រូវបង្ហាញពីចំណុចពិសេសដែលខុសប្លែកពីគេ (Differentiator)។",
+                "feedback_en": "⚠️ Average (65%)! Meeting minimum requirements is baseline; you need to demonstrate your unique competitive edge.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "សង្ខេបចំណុចប្រសព្វរវាងជំនាញបច្ចេកទេស បទពិសោធន៍ដោះស្រាយបញ្ហាជាក់ស្តែងពីមុន និងសមត្ថភាពបង្កើតលទ្ធផលលឿនជូនក្រុមការងារ។",
+                "text_en": "Highlight the combination of your technical skills, proven problem-solving track record, and immediate ability to deliver tangible impact.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! ឆ្លើយចំចំណុច ផ្សារភ្ជាប់សមត្ថភាពទៅនឹងដំណោះស្រាយបញ្ហារបស់ក្រុមហ៊ុន និងបង្ហាញពីទំនុកចិត្តប្រកបដោយវិជ្ជាជីវៈ។",
+                "feedback_en": "🌟 Perfect (95%)! Clearly articulates unique strengths, proven track record, and immediate value for the team.",
+            },
+        ],
+    },
+    {
+        "id": 6,
+        "topic": "ការដោះស្រាយជម្លោះ / Conflict Resolution",
+        "q_kh": "តើអ្នកដោះស្រាយជម្លោះ ឬការមិនចុះសម្រុងជាមួយមិត្តរួមការងារដោយរបៀបណា? (How do you handle conflict with a coworker?)",
+        "q_en": "How do you handle conflict or disagreement with a colleague?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "ជួបពិភាក្សាដោយផ្ទាល់ និងដោយស្ងប់ស្ងាត់ ស្តាប់ទស្សនៈរបស់ភាគីម្ខាងទៀត ផ្តោតលើគោលដៅរួមនៃការងារ និងស្វែងរកដំណោះស្រាយឈ្នះ-ឈ្នះ (Win-Win)។",
+                "text_en": "Initiate a calm, private discussion, actively listen to their perspective, focus on common project goals, and find a win-win compromise.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! បង្ហាញភាពចាស់ទុំខាងផ្លូវចិត្ត (Emotional Intelligence) ជំនាញប្រាស្រ័យទាក់ទង និងការផ្តល់អាទិភាពលើផលប្រយោជន៍រួម។",
+                "feedback_en": "🌟 Perfect (95%)! Demonstrates high emotional intelligence, active listening, and constructive collaboration.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "រត់ទៅប្តឹងប្រធានភ្លាមៗ ឬឈ្លោះប្រកែកតវ៉ាឱ្យឈ្នះចាញ់ ឬធ្វើព្រងើយកន្តើយមិននិយាយរកគ្នារហូតដល់ចប់គម្រោង។",
+                "text_en": "Immediately complain to the manager, argue to win, or give them the silent treatment.",
+                "percent": 25,
+                "feedback_kh": "❌ ខ្សោយខ្លាំង (25%)! បង្ហាញពីកង្វះភាពចាស់ទុំ និងបង្កើតបរិយាកាសអវិជ្ជមានប៉ះពាល់ដល់ស្មារតីក្រុមទាំងមូល។",
+                "feedback_en": "❌ Poor (25%)! Immature and destructive; damages workplace cohesion and morale.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ព្យាយាមគេចចេញពីការប្រឈមមុខ ហើយយល់ព្រមតាមគំនិតគេជានិច្ច ដើម្បីកុំឱ្យមានជម្លោះទោះបីដឹងថាគំនិតនោះមិនល្អក៏ដោយ។",
+                "text_en": "Avoid conflict entirely and always give in, even if the other person's idea harms work quality.",
+                "percent": 60,
+                "feedback_kh": "⚠️ មធ្យម (60%)! ការគេចវេសជម្លោះដោយមិនគិតពីគុណភាពការងារមិនមែនជាដំណោះស្រាយវិជ្ជាជីវៈទេ។ ជម្លោះប្រកបដោយការស្ថាបនាជួយឱ្យការងារកាន់តែប្រសើរ។",
+                "feedback_en": "⚠️ Average (60%)! Conflict avoidance at the expense of quality shows lack of healthy assertiveness.",
+            },
+        ],
+    },
+    {
+        "id": 7,
+        "topic": "ការទទួលខុសត្រូវលើកំហុស / Handling Mistakes",
+        "q_kh": "សូមរៀបរាប់ពីពេលដែលអ្នកធ្លាប់ធ្វើខុស ឬបរាជ័យក្នុងការងារ តើអ្នកដោះស្រាយដូចម្តេច? (Describe a time you made a mistake.)",
+        "q_en": "Describe a time you made a mistake or failed. How did you handle it?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "លើកឡើងកំហុសតូចតាចដែលស្ទើរតែគ្មានន័យ (ដូចជាភ្លេចសរសេរកាលបរិច្ឆេទ) ដើម្បីបញ្ចៀសកុំឱ្យមើលទៅអាក្រក់។",
+                "text_en": "Mention an insignificant, minor typo to avoid looking bad in front of the interviewer.",
+                "percent": 65,
+                "feedback_kh": "⚠️ មធ្យម (65%)! អ្នកសម្ភាសន៍ចង់ឃើញពីភាពក្លាហានក្នុងការទទួលខុសត្រូវ និងការរៀនសូត្រពីកំហុសពិតប្រាកដ ការគេចវេសបង្ហាញពីការមិនបើកចំហ។",
+                "feedback_en": "⚠️ Average (65%)! Dodges the essence of the question; interviewers want to evaluate real accountability and resilience.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ទទួលស្គាល់កំហុសពិតប្រាកដដោយបើកចំហ មិនទម្លាក់កំហុសលើអ្នកដទៃ ពន្យល់ពីវិធានការដោះស្រាយបន្ទាន់ និងមេរៀនដែលបានរៀនដើម្បីការពារកុំឱ្យកើតឡើងម្តងទៀត។",
+                "text_en": "Take full ownership of a real mistake, explain immediate corrective action taken, and detail safeguards implemented to prevent recurrence.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! បង្ហាញភាពស្មោះត្រង់ ទំនួលខុសត្រូវខ្ពស់ (Accountability) សមត្ថភាពដោះស្រាយវិបត្តិ និងការរៀនសូត្រដើម្បីអភិវឌ្ឍន៍ខ្លួន។",
+                "feedback_en": "🌟 Perfect (95%)! Demonstrates high integrity, proactive problem-solving, and continuous improvement.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ខ្ញុំមិនដែលធ្វើខុសក្នុងការងារទេ បើមានបញ្ហាគឺមកពីមិត្តរួមក្រុមមិនសហការ ឬប្រធានដាក់ការងារមិនច្បាស់លាស់។",
+                "text_en": "I never make mistakes; failures happen because teammates didn't cooperate or instructions were unclear.",
+                "percent": 20,
+                "feedback_kh": "❌ ខ្សោយខ្លាំង (20%)! ការទម្លាក់កំហុសលើអ្នកដទៃ (Blaming others) គឺជាសញ្ញាព្រមានធំ (Red Flag) សម្រាប់អ្នកជ្រើសរើសបុគ្គលិក។",
+                "feedback_en": "❌ Fatal Flaw (20%)! Blaming others and refusing accountability is a major hiring red flag.",
+            },
+        ],
+    },
+    {
+        "id": 8,
+        "topic": "ការងារក្រោមសម្ពាធ / Working Under Pressure",
+        "q_kh": "តើអ្នកទប់ទល់នឹងសម្ពាធការងារ និងកាលកំណត់បន្ទាន់ (Tight Deadlines) យ៉ាងដូចម្តេច? (How do you handle pressure and deadlines?)",
+        "q_en": "How do you handle tight deadlines and high stress?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "រក្សាភាពស្ងប់ស្ងាត់ រៀបចំអាទិភាពតាម Eisenhower Matrix (បន្ទាន់ vs សំខាន់) បំបែកការងារជាជំហានតូចៗ និងប្រាស្រ័យទាក់ទងជាមួយក្រុមជាប្រចាំ។",
+                "text_en": "Stay calm, prioritize tasks systematically (urgent vs. important), break tasks into milestones, and communicate proactively with stakeholders.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! បង្ហាញពីប្រព័ន្ធគ្រប់គ្រងការងារច្បាស់លាស់ ភាពធន់នឹងសម្ពាធ (Resilience) និងជំនាញទំនាក់ទំនងល្អ។",
+                "feedback_en": "🌟 Perfect (95%)! Structured prioritization, emotional composure, and proactive communication prove high reliability.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ខ្ញុំព្យាយាមធ្វើការថែមម៉ោង (OT) ពេញមួយយប់ និងផឹកកាហ្វេច្រើនដើម្បីបញ្ចប់ការងារឱ្យទាន់។",
+                "text_en": "I just work overtime all night without sleep and drink lots of energy drinks to rush it.",
+                "percent": 60,
+                "feedback_kh": "⚠️ មធ្យម (60%)! បង្ហាញការតស៊ូ ប៉ុន្តែវិធីនេះគ្មាននិរន្តរភាព (Unsustainable) ងាយ Burnout និងអាចបង្កកំហុសច្រើនក្នុងការងារ។",
+                "feedback_en": "⚠️ Average (60%)! Demonstrates dedication, but frantic cramming leads to burnout and errors rather than effective time management.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ខ្ញុំឆាប់ស្លន់ស្លោ និងតានតឹងខ្លាំងពេលមានការងារបន្ទាន់ ជួនកាលខ្ញុំសុំពន្យារពេល ឬសុំឱ្យអ្នកដទៃជួយធ្វើជំនួស។",
+                "text_en": "I panic easily under tight deadlines, often asking for extensions or having others do it.",
+                "percent": 25,
+                "feedback_kh": "❌ ខ្សោយ (25%)! បង្ហាញពីកង្វះសមត្ថភាពគ្រប់គ្រងអារម្មណ៍ និងការមិនអាចពឹងពាក់បានក្នុងស្ថានភាពអាសន្ន។",
+                "feedback_en": "❌ Poor (25%)! Lacks emotional control and dependable delivery under standard business expectations.",
+            },
+        ],
+    },
+    {
+        "id": 9,
+        "topic": "គោលដៅអាជីព / 5-Year Career Vision",
+        "q_kh": "តើអ្នកមើលឃើញខ្លួនឯងនៅចំណុចណា ៥ ឆ្នាំក្រោយ? (Where do you see yourself in 5 years?)",
+        "q_en": "Where do you see yourself in 5 years?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "ខ្ញុំចង់អង្គុយលើកៅអីរបស់អ្នកសម្ភាសន៍នេះ ឬចង់បើកអាជីវកម្មផ្ទាល់ខ្លួនហើយឈប់ធ្វើការងារនេះ។",
+                "text_en": "I want to be sitting in your chair, or start my own company and quit this field.",
+                "percent": 30,
+                "feedback_kh": "❌ ខ្សោយ (30%)! ការបង្ហាញគម្រោងរកស៊ីផ្ទាល់ខ្លួនភ្លាមៗបង្ហាញថាអ្នកមិនស្នាក់នៅយូរឡើយ រីឯការដណ្តើមកៅអីស្តាប់ទៅឈ្លានពាន។",
+                "feedback_en": "❌ Poor (30%)! Suggests low retention; claiming you want the interviewer's job can sound abrasive.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ខ្ញុំគ្រាន់តែចង់មានការងារស្ថិតស្ថេរ មានប្រាក់ខែខ្ពស់ជាងនេះ និងមានតំណែងល្អជាងនេះ។",
+                "text_en": "I just want a stable job, higher salary, and a higher job title.",
+                "percent": 65,
+                "feedback_kh": "⚠️ មធ្យម (65%)! ចម្លើយផ្តោតតែលើផលប្រយោជន៍ផ្ទាល់ខ្លួន មិនបានបង្ហាញពីជំនាញ ឬសមត្ថភាពវិជ្ជាជីវៈជាក់លាក់ដែលចង់ពង្រឹងឡើយ។",
+                "feedback_en": "⚠️ Average (65%)! Vague and self-centered; misses the opportunity to demonstrate professional aspirations.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ចង់ក្លាយជាអ្នកជំនាញស៊ីជម្រៅក្នុងវិស័យនេះ ដឹកនាំគម្រោងសំខាន់ៗដែលបង្កើតផលជះដល់ក្រុមហ៊ុន និងត្រៀមខ្លួនសម្រាប់តួនាទីដឹកនាំក្រុម។",
+                "text_en": "Aspire to master deep expertise in this domain, drive impactful projects that fuel company growth, and step into team leadership.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! ឆ្លុះបញ្ចាំងពីគោលដៅប្រាកដនិយម មហិច្ឆតារីកចម្រើនស្របតាមទិសដៅក្រុមហ៊ុន និងការប្តេជ្ញាចិត្តយូរអង្វែង។",
+                "feedback_en": "🌟 Perfect (95%)! Ambitious, realistic, aligned with business growth, and demonstrates long-term commitment.",
+            },
+        ],
+    },
+    {
+        "id": 10,
+        "topic": "ភាពជាអ្នកដឹកនាំ / Leadership & Initiative",
+        "q_kh": "សូមរៀបរាប់ពីពេលដែលអ្នកបានបង្ហាញភាពជាអ្នកដឹកនាំ ឬការផ្តួចផ្តើមគំនិតថ្មី (Leadership & Initiative)។",
+        "q_en": "Describe a time you demonstrated leadership or took initiative.",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "លើកឡើងស្ថានភាពដែលឃើញបញ្ហា ឬឱកាសកែលម្អ ហើយបានផ្តួចផ្តើមបង្កើតដំណោះស្រាយដោយស្ម័គ្រចិត្ត បំផុសស្មារតីក្រុម និងសម្រេចលទ្ធផលជាក់ស្តែង។",
+                "text_en": "Share a specific scenario where you voluntarily spearheaded a solution to an unaddressed problem, inspired teammates, and achieved measurable impact.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! ភាពជាអ្នកដឹកនាំមិនចាំបាច់មានតួនាទីជា Manager ទេ ប៉ុន្តែស្ថិតលើសកម្មភាពផ្តួចផ្តើម ការដោះស្រាយបញ្ហា និងការជំរុញអ្នកដទៃ។",
+                "feedback_en": "🌟 Perfect (95%)! Demonstrates that leadership is an action, not a title; highlights initiative and drive.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ខ្ញុំបានធ្វើតាមការណែនាំរបស់ប្រធានយ៉ាងម៉ត់ចត់ ហើយជួយរំលឹកសមាជិកដទៃទៀតឱ្យធ្វើការឱ្យទាន់កាលវិភាគ។",
+                "text_en": "I strictly followed manager instructions and reminded other teammates to meet deadlines.",
+                "percent": 60,
+                "feedback_kh": "⚠️ មធ្យម (60%)! នេះជាការបំពេញការងារតាមបញ្ជា និងការត្រួតពិនិត្យ មិនទាន់ឆ្លុះបញ្ចាំងពីការផ្តួចផ្តើមគំនិតថ្មី (Initiative) ដោយខ្លួនឯងឡើយ។",
+                "feedback_en": "⚠️ Average (60%)! Shows discipline and compliance, but reflects task execution rather than proactive initiative.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ខ្ញុំមិនទាន់ជាប្រធានគេទេ ដូច្នេះខ្ញុំមិនដែលដឹកនាំអ្វីឡើយ ខ្ញុំគ្រាន់តែរង់ចាំប្រធានចាត់ចែងការងារឱ្យប៉ុណ្ណោះ។",
+                "text_en": "I am not a manager yet, so I have never led anything; I just wait for assigned tasks.",
+                "percent": 25,
+                "feedback_kh": "❌ ខ្សោយ (25%)! បង្ហាញពីភាពអសកម្ម (Passive mindset) និងកង្វះស្មារតីទទួលខុសត្រូវខ្ពស់លើការងារ។",
+                "feedback_en": "❌ Poor (25%)! Passive mindset that shies away from ownership and growth.",
+            },
+        ],
+    },
+    {
+        "id": 11,
+        "topic": "ហេតុផលចាកចេញពីការងារចាស់ / Reason for Leaving",
+        "q_kh": "ហេតុអ្វីបានជាអ្នកចង់ចាកចេញពីកន្លែងការងារបច្ចុប្បន្ន? (Why are you leaving your current job?)",
+        "q_en": "Why are you looking to leave your current role?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "និយាយរិះគន់ប្រធានចាស់ រអ៊ូរទាំពីបរិយាកាសការងារអាក្រក់ ប្រាក់ខែតិច និងមិត្តរួមការងារលាក់ពុត។",
+                "text_en": "Complain about your bad boss, toxic coworkers, low salary, and poor management culture.",
+                "percent": 20,
+                "feedback_kh": "❌ ខ្សោយខ្លាំង (20%)! កុំនិយាយអាក្រក់ពីកន្លែងចាស់ឱ្យសោះ ព្រោះអ្នកសម្ភាសន៍នឹងសង្ស័យលើអត្តចរិត និងវិជ្ជាជីវៈរបស់អ្នកភ្លាមៗ។",
+                "feedback_en": "❌ Major Red Flag (20%)! Badmouthing past employers reflects negativity, lack of discretion, and unprofessionalism.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ថ្លែងអំណរគុណចំពោះបទពិសោធន៍ល្អៗនៅកន្លែងចាស់ ហើយពន្យល់ថាអ្នកកំពុងស្វែងរកការប្រឈមថ្មីៗ និងឱកាសរីកចម្រើនដែលស្របនឹងគោលដៅនៅក្រុមហ៊ុននេះ។",
+                "text_en": "Express gratitude for lessons learned, and emphasize that you are seeking new growth opportunities aligned with your career goals at this company.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! ឆ្លើយប្រកបដោយវិជ្ជាជីវៈ វិជ្ជមាន និងផ្តោតលើអនាគត (Forward-looking) ជាជាងការត្អូញត្អែររឿងអតីតកាល។",
+                "feedback_en": "🌟 Perfect (95%)! Professional, respectful, forward-looking, and frames the move around career growth.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ខ្ញុំចង់បានប្រាក់ខែច្រើនជាងមុន ព្រោះកន្លែងចាស់មិនព្រមឡើងប្រាក់ខែឱ្យខ្ញុំ។",
+                "text_en": "Simply because I want higher pay and my current employer refused to give me a raise.",
+                "percent": 60,
+                "feedback_kh": "⚠️ មធ្យម (60%)! ទោះបីប្រាក់ខែសំខាន់ ប៉ុន្តែការលើកឡើងតែរឿងលុយសុទ្ធសាធ ធ្វើឱ្យអ្នកមើលទៅគ្មានការប្តេជ្ញាចិត្តលើគុណតម្លៃការងារ។",
+                "feedback_en": "⚠️ Average (60%)! While pay is important, phrasing it solely around money makes you seem purely transactional.",
+            },
+        ],
+    },
+    {
+        "id": 12,
+        "topic": "ការរំពឹងទុកប្រាក់ខែ / Salary Expectations",
+        "q_kh": "តើអ្នករំពឹងទទួលបានប្រាក់បៀវត្សរ៍ប៉ុន្មានដែរ? (What are your salary expectations?)",
+        "q_en": "What are your salary expectations?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "ផ្តល់តួលេខទោលមួយជាក់លាក់ភ្លាមៗ (ឧ. ខ្ញុំចង់បាន $1,000 ដាច់ខាត) ដោយគ្មានការបត់បែន ឬសួរនាំពីអត្ថប្រយោជន៍ផ្សេងទៀត។",
+                "text_en": "State a rigid single figure upfront (e.g., '$1,000 flat, non-negotiable') without asking about the overall package.",
+                "percent": 60,
+                "feedback_kh": "⚠️ មធ្យម (60%)! ការកំណត់តួលេខរឹងប៉ឹងពេកអាចធ្វើឱ្យអ្នកបាត់ឱកាស ឬទាបជាងកញ្ចប់ថវិកាក្រុមហ៊ុន។ គួរផ្តល់ជាចន្លោះ (Range) និងបើកចំហពិភាក្សា។",
+                "feedback_en": "⚠️ Average (60%)! Rigid numbers limit negotiation flexibility and could either disqualify you or leave money on the table.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ផ្អែកលើការស្រាវជ្រាវទីផ្សារការងារ និងតម្លៃនៃការរួមចំណែករបស់អ្នក ផ្តល់ចន្លោះសមរម្យមួយ (Range) និងបញ្ជាក់ពីការបើកចំហពិភាក្សាលើកញ្ចប់អត្ថប្រយោជន៍សរុប។",
+                "text_en": "Provide a well-researched market salary range based on your qualifications, and express openness to discuss total compensation.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! បង្ហាញពីការស្រាវជ្រាវទីផ្សារ មានភាពបត់បែន និងមានវិជ្ជាជីវៈខ្ពស់ក្នុងការចរចា។",
+                "feedback_en": "🌟 Perfect (95%)! Demonstrates market awareness, collaborative flexibility, and mature negotiation skills.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ក្រុមហ៊ុនឱ្យប៉ុន្មានក៏យកដែរ ខ្ញុំមិនទាមទារទេ ឬទាមទារតួលេខខ្ពស់ហួសហេតុដោយគ្មានមូលដ្ឋាន។",
+                "text_en": "Whatever you give me is fine, I don't care, or demanding an exorbitantly high number with zero justification.",
+                "percent": 30,
+                "feedback_kh": "❌ ខ្សោយ (30%)! ឆ្លើយថាប៉ុន្មានក៏យកធ្វើឱ្យអ្នកមើលទៅមិនឱ្យតម្លៃលើសមត្ថភាពខ្លួនឯង រីឯទាមទារខ្ពស់ហួសហេតុបង្ហាញពីការមិនយល់ដឹងពីទីផ្សារ។",
+                "feedback_en": "❌ Poor (30%)! Saying 'anything' devalues yourself, while unjustified extremes show lack of market reality.",
+            },
+        ],
+    },
+    {
+        "id": 13,
+        "topic": "ការចាត់អាទិភាពការងារ / Prioritizing Tasks",
+        "q_kh": "នៅពេលអ្នកមានកិច្ចការបន្ទាន់ច្រើនក្នុងពេលតែមួយ តើអ្នករៀបចំអាទិភាពដូចម្តេច? (How do you prioritize urgent tasks?)",
+        "q_en": "How do you prioritize when handling multiple competing urgent deadlines?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "វាយតម្លៃផលប៉ះពាល់អាជីវកម្ម និងកាលបរិច្ឆេទ ពិភាក្សាជាមួយអ្នកគ្រប់គ្រងដើម្បីបញ្ជាក់អាទិភាពស្នូល បែងចែកការងារ និងរាយការណ៍ដំណើរការជាប្រចាំ។",
+                "text_en": "Evaluate tasks by business impact and urgency, communicate with leadership to align priorities, manage expectations, and execute systematically.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! បង្ហាញពីការគិតជាយុទ្ធសាស្ត្រ ការប្រាស្រ័យទាក់ទងទាន់ពេលវេលា និងសមត្ថភាពគ្រប់គ្រងការងារជាក់ស្តែង។",
+                "feedback_en": "🌟 Perfect (95%)! Demonstrates strategic judgment, stakeholder alignment, and proactive delivery management.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ព្យាយាមធ្វើអ្វីគ្រប់យ៉ាងក្នុងពេលតែមួយ (Multitasking ជ្រុល) រហូតដល់ច្របូកច្របល់ ឬរើសធ្វើតែការងារងាយៗមុន ដោយទុកការងារលំបាកចោល។",
+                "text_en": "Try to multitask everything haphazardly, or only pick the easiest tasks while ignoring hard, critical ones.",
+                "percent": 30,
+                "feedback_kh": "❌ ខ្សោយ (30%)! ការធ្វើការងារដោយគ្មានប្រព័ន្ធនាំឱ្យមានកំហុសច្រើន បាត់បង់គុណភាព និងមិនទាន់កាលវិភាគ។",
+                "feedback_en": "❌ Poor (30%)! Disorganized multitasking leads to careless mistakes, missed deadlines, and compromised output.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ធ្វើការងារណាដែលមកដល់មុនគេ (First come, first served) ដោយមិនបានពិនិត្យមើលថាតើការងារណាមានសារៈសំខាន់ជាង។",
+                "text_en": "Handle tasks purely based on order of arrival (first-come, first-served) without assessing urgency or business impact.",
+                "percent": 60,
+                "feedback_kh": "⚠️ មធ្យម (60%)! វិធីនេះមិនឆ្លុះបញ្ចាំងពីការយល់ដឹងអំពីអាទិភាពអាជីវកម្មឡើយ ព្រោះការងារសំខាន់បំផុតអាចនឹងមកដល់ក្រោយ។",
+                "feedback_en": "⚠️ Average (60%)! First-in-first-out ignores commercial impact and genuine strategic priority.",
+            },
+        ],
+    },
+    {
+        "id": 14,
+        "topic": "ការសម្របខ្លួន / Adaptability & Flexibility",
+        "q_kh": "តើអ្នកសម្របខ្លួនយ៉ាងដូចម្តេច នៅពេលតម្រូវការគម្រោងមានការផ្លាស់ប្តូរភ្លាមៗ? (How do you adapt to sudden project changes?)",
+        "q_en": "How do you handle sudden changes in project scope or requirements?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "អនុវត្តតាមការផ្លាស់ប្តូរដោយស្ងៀមស្ងាត់ ប៉ុន្តែក្នុងចិត្តមានអារម្មណ៍មិនសប្បាយចិត្ត និងត្អូញត្អែរជាមួយមិត្តរួមការងារ។",
+                "text_en": "Silently comply with changes while secretly feeling resentful and complaining to coworkers.",
+                "percent": 60,
+                "feedback_kh": "⚠️ មធ្យម (60%)! ទោះបីការងារសម្រេច ប៉ុន្តែអាកប្បកិរិយាអវិជ្ជមានប៉ះពាល់ដល់ស្មារតីក្រុម និងបរិយាកាសការងារ។",
+                "feedback_en": "⚠️ Average (60%)! Compliant but passive-aggressive; spreads negativity and undermines team morale.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "ប្រកែកតវ៉ាយ៉ាងដាច់អហង្ការ មិនព្រមកែប្រែការងារដែលបានធ្វើរួច និងស្តីបន្ទោសអតិថិជន ឬអ្នកគ្រប់គ្រងដែលប្តូរចិត្ត។",
+                "text_en": "Stubbornly push back, refuse to alter finished work, and blame clients or managers for changing minds.",
+                "percent": 25,
+                "feedback_kh": "❌ ខ្សោយខ្លាំង (25%)! បង្ហាញពីភាពរឹងរូស មិនអាចបត់បែនបាន និងខ្វះការយល់ដឹងអំពីបរិបទអាជីវកម្មជាក់ស្តែងដែលតែងមានការប្រែប្រួល។",
+                "feedback_en": "❌ Poor (25%)! Inflexible and defensive; demonstrates inability to thrive in real-world agile environments.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "ទទួលយកការផ្លាស់ប្តូរដោយវិជ្ជមាន ស្វែងយល់ពីមូលហេតុអាជីវកម្មនៅពីក្រោយការកែប្រែ វាយតម្លៃផលប៉ះពាល់លើពេលវេលា និងរៀបចំផែនការអនុវត្តឡើងវិញ (Agile mindset)។",
+                "text_en": "Embrace the pivot positively, understand the underlying business driver, evaluate timeline/resource impacts, and execute an agile revised plan.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! បង្ហាញភាពបត់បែនខ្ពស់ ស្មារតី Agile និងសមត្ថភាពដោះស្រាយបញ្ហាជាក់ស្តែងក្នុងបរិយាកាសការងារលឿន។",
+                "feedback_en": "🌟 Perfect (95%)! High adaptability, commercial awareness, and resilience in evolving conditions.",
+            },
+        ],
+    },
+    {
+        "id": 15,
+        "topic": "សំណួរទៅកាន់អ្នកសម្ភាសន៍ / Questions for Interviewer",
+        "q_kh": "តើអ្នកមានសំណួរអ្វីចង់សួរមកកាន់ពួកយើងដែរឬទេ? (Do you have any questions for us?)",
+        "q_en": "Do you have any questions for us before we conclude?",
+        "options": [
+            {
+                "letter": "A",
+                "text_kh": "សួរសំណួរប្រកបដោយការគិតស៊ីជម្រៅអំពី៖ គោលដៅជោគជ័យនៃតួនាទីនេះក្នុងរយៈពេល ៣-៦ ខែដំបូង វប្បធម៌ការងាររបស់ក្រុម ឬទិសដៅរីកចម្រើនរបស់ក្រុមហ៊ុនទៅមុខ។",
+                "text_en": "Ask thoughtful questions about: 90-day success metrics for this role, team culture, or the company's long-term strategic growth goals.",
+                "percent": 95,
+                "feedback_kh": "🌟 ល្អឥតខ្ចោះ (95%)! បង្ហាញពីការយកចិត្តទុកដាក់ខ្ពស់ ចង់ជោគជ័យក្នុងតួនាទីពិតប្រាកដ និងធ្វើឱ្យអ្នកសម្ភាសន៍ចងចាំអ្នកយ៉ាងល្អ។",
+                "feedback_en": "🌟 Perfect (95%)! Demonstrates deep curiosity, engagement, strategic mindset, and true commitment to excellence.",
+            },
+            {
+                "letter": "B",
+                "text_kh": "អត់មានសំណួរអ្វីទេ ខ្ញុំយល់អស់ហើយ។",
+                "text_en": "No, I don't have any questions. Everything was already explained.",
+                "percent": 25,
+                "feedback_kh": "❌ ខ្សោយ (25%)! ការឆ្លើយថាគ្មានសំណួរធ្វើឱ្យអ្នកមើលទៅហាក់ដូចជាមិនសូវចាប់អារម្មណ៍ ឬមិនបានត្រៀមខ្លួនសម្រាប់សម្ភាសន៍។ នេះជាឱកាសចុងក្រោយដើម្បីបង្ហាញចំណាប់អារម្មណ៍!។",
+                "feedback_en": "❌ Poor (25%)! Signals disinterest, lack of curiosity, or passivity. Always prepare 2-3 insightful questions.",
+            },
+            {
+                "letter": "C",
+                "text_kh": "សួរបញ្ជាក់តែពីប្រាក់ឈ្នួល ថ្ងៃឈប់សម្រាក ម៉ោងចេញពីធ្វើការ និងអត្ថប្រយោជន៍ភ្លាមៗ។",
+                "text_en": "Immediately ask solely about vacation days, strict clock-out times, and fringe perks.",
+                "percent": 50,
+                "feedback_kh": "⚠️ មធ្យម (50%)! ទោះបីជាសិទ្ធិស្របច្បាប់ ប៉ុន្តែការផ្តោតតែលើម៉ោងឈប់ និងអត្ថប្រយោជន៍នៅចុងបញ្ចប់ធ្វើឱ្យគេគិតថាអ្នកគិតតែពីផលប្រយោជន៍ផ្ទាល់ខ្លួនមុនការងារ។",
+                "feedback_en": "⚠️ Average (50%)! While valid topics later, asking only about time-off in early rounds makes you appear more focused on leaving than contributing.",
+            },
+        ],
+    },
+]
+
+
+def make_score_bar(percent: int) -> str:
+    """Generate visual progress bar for percentage."""
+    filled = round(percent / 10)
+    empty = 10 - filled
+    if percent >= 85:
+        emoji = "🟩"
+    elif percent >= 50:
+        emoji = "🟨"
+    else:
+        emoji = "🟥"
+    return f"{emoji * filled}{'⬜' * empty} <b>{percent}%</b>"
+
+
+def get_score_badge(percent: int) -> str:
+    """Return descriptive rating badge based on percentage."""
+    if percent >= 90:
+        return "🌟 <b>កម្រិត៖ ល្អឥតខ្ចោះ / Perfect & Professional Answer!</b>"
+    elif percent >= 75:
+        return "👍 <b>កម្រិត៖ ល្អសមរម្យ / Good Answer</b>"
+    elif percent >= 50:
+        return "⚠️ <b>កម្រិត៖ មធ្យម / Moderate (Needs Improvement)</b>"
+    else:
+        return "❌ <b>កម្រិត៖ ខ្សោយ / Weak Answer (Not Recommended)</b>"
+
+
+def get_mock_home_text() -> str:
+    """Welcome and overview message for Mock Interview Test."""
+    return (
+        f"🎯 <b>តេស្តសម្ភាសន៍ការងារសាកល្បង (Mock Interview Test)</b>\n"
+        f"━━━━━━━━━━━━━━━━━━\n"
+        f"សូមស្វាគមន៍មកកាន់ការធ្វើតេស្តសម្ភាសន៍ការងារសាកល្បង!\n\n"
+        f"📝 <b>ព័ត៌មានលម្អិតអំពីតេស្ត៖</b>\n"
+        f"• ចំនួនសំណួរ៖ <b>១៥ សំណួរ</b> (គ្របដណ្តប់សំណួរសំខាន់ៗក្នុងការសម្ភាសន៍)\n"
+        f"• ជម្រើសក្នុងមួយសំណួរ៖ <b>៣ ជម្រើស</b> (Choose 1 of 3 options)\n"
+        f"• ការវាយតម្លៃ៖ បង្ហាញជា <b>ភាគរយ (%)</b> ភ្លាមៗ (The higher the percent, the closer it is to the perfect answer!)\n"
+        f"• រួមមាន៖ ការពន្យល់ និងការផ្តល់មតិកែលម្អពី HR / Recruiter។\n\n"
+        f"👇 <b>សូមចុចប៊ូតុងខាងក្រោមដើម្បីចាប់ផ្ដើម ឬជ្រើសរើសសំណួរ៖</b>"
+    )
+
+
+def build_mock_home_keyboard() -> InlineKeyboardMarkup:
+    """Build keyboard for Mock Interview Test home."""
+    return InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "▶️ ចាប់ផ្ដើមតេស្ត (សំណួរទី ១) / Start Test",
+                callback_data="mock_q_0"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "📋 បញ្ជីសំណួរទាំង ១៥ / All 15 Questions",
+                callback_data="mock_list"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🔙 ត្រឡប់ទៅ FAQ / Back to FAQ",
+                callback_data="faq_home"
+            )
+        ],
+    ])
+
+
+def get_mock_question_text(q_idx: int) -> str:
+    """Format single question screen with 3 options."""
+    q = MOCK_INTERVIEW_QUESTIONS[q_idx]
+    opts_text = []
+    for opt in q["options"]:
+        letter_icon = "🅰️" if opt["letter"] == "A" else ("🅱️" if opt["letter"] == "B" else "🅲")
+        opts_text.append(
+            f"{letter_icon} <b>ជម្រើស {opt['letter']}៖</b>\n"
+            f"🇰🇭 {opt['text_kh']}\n"
+            f"🇬🇧 <i>{opt['text_en']}</i>"
+        )
+    joined_opts = "\n\n".join(opts_text)
+
+    return (
+        f"🎯 <b>Mock Interview Test — សំណួរទី {q_idx + 1}/15</b>\n"
+        f"━━━━━━━━━━━━━━━━━━\n"
+        f"💼 <b>ប្រធានបទ៖</b> {q['topic']}\n\n"
+        f"❓ <b>សំណួរសម្ភាសន៍ (Question)៖</b>\n"
+        f"🇰🇭 <b>{q['q_kh']}</b>\n"
+        f"🇬🇧 <i>{q['q_en']}</i>\n\n"
+        f"━━━━━━━━━━━━━━━━━━\n"
+        f"👇 <b>សូមជ្រើសរើសចម្លើយរបស់អ្នក / Choose your answer:</b>\n\n"
+        f"{joined_opts}"
+    )
+
+
+def build_mock_question_keyboard(q_idx: int) -> InlineKeyboardMarkup:
+    """Build keyboard with 3 option buttons and navigation for a question."""
+    rows = [
+        [
+            InlineKeyboardButton("🅰️ ជម្រើស A", callback_data=f"mock_ans_{q_idx}_0"),
+            InlineKeyboardButton("🅱️ ជម្រើស B", callback_data=f"mock_ans_{q_idx}_1"),
+            InlineKeyboardButton("🅲 ជម្រើស C", callback_data=f"mock_ans_{q_idx}_2"),
+        ]
+    ]
+
+    nav_row = []
+    if q_idx > 0:
+        nav_row.append(InlineKeyboardButton("⬅️ សំណួរមុន", callback_data=f"mock_q_{q_idx - 1}"))
+    if q_idx < len(MOCK_INTERVIEW_QUESTIONS) - 1:
+        nav_row.append(InlineKeyboardButton("សំណួរបន្ទាប់ ➡️", callback_data=f"mock_q_{q_idx + 1}"))
+    if nav_row:
+        rows.append(nav_row)
+
+    rows.append([
+        InlineKeyboardButton("📋 បញ្ជីសំណួរ (1-15)", callback_data="mock_list"),
+        InlineKeyboardButton("🔙 ទៅកាន់ FAQ", callback_data="faq_home"),
+    ])
+    return InlineKeyboardMarkup(rows)
+
+
+def get_mock_result_text(q_idx: int, opt_idx: int) -> str:
+    """Format the evaluation result screen with percentage score and comparison."""
+    q = MOCK_INTERVIEW_QUESTIONS[q_idx]
+    chosen = q["options"][opt_idx]
+    percent = chosen["percent"]
+
+    opts_comparison = []
+    for opt in q["options"]:
+        star = " 🏆 <i>(ចម្លើយល្អបំផុត / Best)</i>" if opt["percent"] >= 90 else ""
+        selected_mark = " 👈 <i>[ចម្លើយរបស់អ្នក / Your Pick]</i>" if opt["letter"] == chosen["letter"] else ""
+        letter_icon = "🅰️" if opt["letter"] == "A" else ("🅱️" if opt["letter"] == "B" else "🅲")
+        opts_comparison.append(
+            f"{letter_icon} <b>ជម្រើស {opt['letter']}៖</b> <b>{opt['percent']}%</b>{star}{selected_mark}\n"
+            f"   • {opt['text_kh']}"
+        )
+    comp_text = "\n\n".join(opts_comparison)
+
+    return (
+        f"🎯 <b>លទ្ធផលតេស្តសម្ភាសន៍ / Mock Interview Result</b>\n"
+        f"━━━━━━━━━━━━━━━━━━\n"
+        f"❓ <b>សំណួរទី {q_idx + 1}/15៖</b>\n"
+        f"🇰🇭 <b>{q['q_kh']}</b>\n"
+        f"🇬🇧 <i>{q['q_en']}</i>\n\n"
+        f"👉 <b>ចម្លើយដែលអ្នកបានជ្រើសរើស៖</b>\n"
+        f"<b>ជម្រើស {chosen['letter']}៖</b> {chosen['text_kh']}\n\n"
+        f"📊 <b>ពិន្ទុភាពស័ក្តិសម (Match Score)៖</b>\n"
+        f"{make_score_bar(percent)}\n"
+        f"{get_score_badge(percent)}\n\n"
+        f"💡 <b>ការវាយតម្លៃ & ហេតុផល (Feedback)៖</b>\n"
+        f"🇰🇭 {chosen['feedback_kh']}\n"
+        f"🇬🇧 <i>{chosen['feedback_en']}</i>\n\n"
+        f"━━━━━━━━━━━━━━━━━━\n"
+        f"📊 <b>ការប្រៀបធៀបគ្រប់ជម្រើស (All Options Score)៖</b>\n"
+        f"{comp_text}\n\n"
+        f"ℹ️ <i>ភាគរយកាន់តែខ្ពស់ បង្ហាញថាចម្លើយកាន់តែល្អឥតខ្ចោះ និងត្រូវចិត្តអ្នកសម្ភាសន៍បំផុត (The higher the percent, the more perfect the answer)!</i>"
+    )
+
+
+def build_mock_result_keyboard(q_idx: int, opt_idx: int) -> InlineKeyboardMarkup:
+    """Build navigation and retry keyboard for result screen."""
+    rows = [
+        [
+            InlineKeyboardButton(
+                "🔄 សាកល្បងសំណួរនេះម្ដងទៀត / Try Again",
+                callback_data=f"mock_q_{q_idx}"
+            )
+        ]
+    ]
+
+    nav_row = []
+    if q_idx > 0:
+        nav_row.append(InlineKeyboardButton("⬅️ សំណួរមុន", callback_data=f"mock_q_{q_idx - 1}"))
+    if q_idx < len(MOCK_INTERVIEW_QUESTIONS) - 1:
+        nav_row.append(InlineKeyboardButton(
+            f"សំណួរបន្ទាប់ (ទី {q_idx + 2}/15) ➡️",
+            callback_data=f"mock_q_{q_idx + 1}"
+        ))
+    else:
+        nav_row.append(InlineKeyboardButton("🎉 បញ្ចប់តេស្ត / Finish", callback_data="mock_home"))
+    rows.append(nav_row)
+
+    rows.append([
+        InlineKeyboardButton("📋 បញ្ជីសំណួរ (1-15)", callback_data="mock_list"),
+        InlineKeyboardButton("🔙 ត្រឡប់ទៅ FAQ", callback_data="faq_home"),
+    ])
+    return InlineKeyboardMarkup(rows)
+
+
+def get_mock_list_text() -> str:
+    """Format full list of all 15 questions."""
+    lines = [
+        "🎯 <b>បញ្ជីសំណួរសម្ភាសន៍ទាំង ១៥ (All 15 Mock Interview Questions)</b>",
+        "━━━━━━━━━━━━━━━━━━",
+        "សូមជ្រើសរើសសំណួរណាមួយដើម្បីអនុវត្តតេស្ត៖\n",
+    ]
+    for q in MOCK_INTERVIEW_QUESTIONS:
+        lines.append(f"<b>{q['id']}.</b> {q['q_kh']}")
+        lines.append(f"   <i>{q['q_en']}</i>\n")
+    lines.append("👇 <b>ចុចលើលេខសំណួរខាងក្រោមដើម្បីចាប់ផ្ដើម៖</b>")
+    return "\n".join(lines)
+
+
+def build_mock_list_keyboard() -> InlineKeyboardMarkup:
+    """Build grid of 15 question buttons plus return buttons."""
+    rows = []
+    # 5 rows of 3 buttons
+    for r in range(0, 15, 3):
+        row = []
+        for i in range(r, min(r + 3, 15)):
+            row.append(InlineKeyboardButton(
+                f"សំណួរ {i + 1}",
+                callback_data=f"mock_q_{i}"
+            ))
+        rows.append(row)
+    rows.append([
+        InlineKeyboardButton("🎯 ទំព័រដើមតេស្ត / Test Home", callback_data="mock_home"),
+        InlineKeyboardButton("🔙 ត្រឡប់ទៅ FAQ", callback_data="faq_home"),
+    ])
+    return InlineKeyboardMarkup(rows)
+
+
 def get_faq_home_text() -> str:
     """Main FAQ menu message."""
     return (
@@ -588,12 +1293,21 @@ def get_faq_home_text() -> str:
         f"━━━━━━━━━━━━━━━━━━\n"
         f"💬 <b>Do you have any questions about career or CV?</b>\n"
         f"តើអ្នកមានចម្ងល់ ឬសំណួរអ្វីខ្លះអំពី <b>Career</b> ឬ <b>CV</b>?\n\n"
+        f"🎯 <b>តេស្តសម្ភាសន៍សាកល្បង / Mock Interview Test៖</b>\n"
+        f"អនុវត្តឆ្លើយសំណួរសម្ភាសន៍ ១៥ សំណួរ និងពិនិត្យពិន្ទុភាគរយ (%) នៃចម្លើយរបស់អ្នក!\n\n"
         f"📦 <b>សូមជ្រើសរើសផ្នែកខាងក្រោម / Select a Category:</b>"
     )
 
 def build_faq_home_keyboard() -> InlineKeyboardMarkup:
-    """Build keyboard for category list (2-column layout)."""
+    """Build keyboard for category list (2-column layout) with Mock Interview Test button."""
     rows = []
+    # Dedicated prominent button for Mock Interview Test
+    rows.append([
+        InlineKeyboardButton(
+            "🎯 តេស្តសម្ភាសន៍សាកល្បង (Mock Interview Test)",
+            callback_data="mock_home"
+        )
+    ])
     for i in range(0, len(FAQ_CATEGORIES), 2):
         row = []
         for c_idx in range(i, min(i + 2, len(FAQ_CATEGORIES))):
@@ -802,6 +1516,15 @@ BUTTON_ACTIONS = {
     "សំណួរ-ចម្លើយ (FAQ)": {
         "is_faq": True,
     },
+    "🎯 តេស្តសម្ភាសន៍សាកល្បង": {
+        "is_mock": True,
+    },
+    "Mock Interview Test": {
+        "is_mock": True,
+    },
+    "តេស្តសម្ភាសន៍": {
+        "is_mock": True,
+    },
     "Support Us": {
         "text": (
             f"{tg_emoji(EMOJI_SUPPORT or EMOJI_DONATE, '💝')} <b>Support Us / គាំទ្រពួកយើង</b>\n\n"
@@ -981,6 +1704,22 @@ async def faq_cmd(
     track_message(context, update.effective_chat.id, sent.message_id)
 
 
+async def mock_cmd(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
+    """Show the Mock Interview Test menu."""
+    if update.message:
+        track_message(context, update.effective_chat.id, update.message.message_id)
+    sent = await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=get_mock_home_text(),
+        reply_markup=build_mock_home_keyboard(),
+        parse_mode="HTML",
+    )
+    track_message(context, update.effective_chat.id, sent.message_id)
+
+
 async def handle_callback(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
@@ -1058,6 +1797,54 @@ async def handle_callback(
     elif query.data == "faq_noop":
         pass
 
+    elif query.data == "mock_home":
+        try:
+            await query.edit_message_text(
+                text=get_mock_home_text(),
+                reply_markup=build_mock_home_keyboard(),
+                parse_mode="HTML",
+            )
+        except BadRequest:
+            pass
+
+    elif query.data == "mock_list":
+        try:
+            await query.edit_message_text(
+                text=get_mock_list_text(),
+                reply_markup=build_mock_list_keyboard(),
+                parse_mode="HTML",
+            )
+        except BadRequest:
+            pass
+
+    elif query.data.startswith("mock_q_"):
+        q_idx = int(query.data.split("_")[2])
+        if 0 <= q_idx < len(MOCK_INTERVIEW_QUESTIONS):
+            try:
+                await query.edit_message_text(
+                    text=get_mock_question_text(q_idx),
+                    reply_markup=build_mock_question_keyboard(q_idx),
+                    parse_mode="HTML",
+                )
+            except BadRequest:
+                pass
+
+    elif query.data.startswith("mock_ans_"):
+        parts = query.data.split("_")
+        q_idx = int(parts[2])
+        opt_idx = int(parts[3])
+        if 0 <= q_idx < len(MOCK_INTERVIEW_QUESTIONS):
+            q = MOCK_INTERVIEW_QUESTIONS[q_idx]
+            if 0 <= opt_idx < len(q["options"]):
+                try:
+                    await query.edit_message_text(
+                        text=get_mock_result_text(q_idx, opt_idx),
+                        reply_markup=build_mock_result_keyboard(q_idx, opt_idx),
+                        parse_mode="HTML",
+                    )
+                except BadRequest:
+                    pass
+
 
 async def handle_message(
     update: Update,
@@ -1092,8 +1879,17 @@ async def handle_message(
         except Exception:
             pass
 
+        # បើសិនជាប៊ូតុង Mock Interview
+        if action.get("is_mock"):
+            sent = await context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                text=get_mock_home_text(),
+                reply_markup=build_mock_home_keyboard(),
+                parse_mode="HTML",
+            )
+            track_message(context, update.effective_chat.id, sent.message_id)
         # បើសិនជាប៊ូតុង FAQ
-        if action.get("is_faq"):
+        elif action.get("is_faq"):
             sent = await context.bot.send_message(
                 chat_id=update.effective_chat.id,
                 text=get_faq_home_text(),
@@ -1159,6 +1955,7 @@ async def post_init(application: Application) -> None:
         commands = [
             BotCommand("start", "Start the bot / ចាប់ផ្ដើម"),
             BotCommand("faq", "Frequently Asked Questions / សំណួរ-ចម្លើយ"),
+            BotCommand("mock", "Mock Interview Test / តេស្តសម្ភាសន៍សាកល្បង"),
             BotCommand("clear", "Clear chatbot message history / សម្អាតសារ"),
         ]
         await application.bot.set_my_commands(commands)
@@ -1223,6 +2020,9 @@ def main():
     )
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("faq", faq_cmd))
+    app.add_handler(CommandHandler("mock", mock_cmd))
+    app.add_handler(CommandHandler("interview", mock_cmd))
+    app.add_handler(CommandHandler("mockinterview", mock_cmd))
     app.add_handler(CommandHandler("clear", clear_chat))
     app.add_handler(CommandHandler("clearchat", clear_chat))
     app.add_handler(CallbackQueryHandler(handle_callback))
